@@ -14,7 +14,7 @@
     <textElement ID="I" KEY="TB4" ENTRY="Customizing - Critère de sélection" LENGTH="68 "/>
     <textElement ID="I" KEY="TB5" ENTRY="Options de comparaison" LENGTH="44 "/>
     <textElement ID="I" KEY="TB6" ENTRY="Options pour Customizing" LENGTH="46 "/>
-    <textElement ID="I" KEY="TCD" ENTRY="Pas de différence de contenu" LENGTH="56 "/>
+    <textElement ID="I" KEY="TCD" ENTRY="Similarité de contenu" LENGTH="56 "/>
     <textElement ID="I" KEY="TCE" ENTRY="Statut comparaison" LENGTH="28 "/>
     <textElement ID="I" KEY="TEO" ENTRY="Existe dans système origine" LENGTH="50 "/>
     <textElement ID="I" KEY="TEQ" ENTRY="Equivalent" LENGTH="20 "/>
@@ -25,7 +25,7 @@
     <textElement ID="I" KEY="TNF" ENTRY="Pas de champs en commun" LENGTH="46 "/>
     <textElement ID="I" KEY="TNR" ENTRY="Non lisible" LENGTH="21 "/>
     <textElement ID="I" KEY="TNV" ENTRY="Non versionnable" LENGTH="26 "/>
-    <textElement ID="R" ENTRY="Utilitaire : Comparaison version objets" LENGTH="49 "/>
+    <textElement ID="R" ENTRY="Utilitaire : Comparaison version objets" LENGTH="39 "/>
     <textElement ID="S" KEY="P_CUSTO" ENTRY="        Customizing" LENGTH="19 "/>
     <textElement ID="S" KEY="P_ONLY_C" ENTRY="        Uniquement objet commun" LENGTH="31 "/>
     <textElement ID="S" KEY="P_ONLY_D" ENTRY="        Afficher uniq. différence" LENGTH="33 "/>
@@ -41,8 +41,18 @@
    </language>
   </textPool>
   <dynpros>
-   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="3000" FNUM="3000" BZMX="26 " BZBR="167 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="185 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
+   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="2000" FNUM="2000" BZMX="0 " BZBR="0 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="175 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
+    <dynprofield FNAM="CC_WORKBENCH_COMPARE_RESULT" DIDX="001B" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="AF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_2000.
+
+PROCESS AFTER INPUT.
+  MODULE user_command_2000.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="3000" FNUM="3000" BZMX="26 " BZBR="185 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="186 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
     <dynprofield FNAM="CC_TABLE_LIST" DIDX="0006" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="B8" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield FNAM="GV_CUSTO_TABNAME" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="39" FMB2="00" LENG="1E" LINE="07" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="______________________________"/>
     <dynprofield FNAM="GV_SYTEM_ORIGIN" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="102" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
     <dynprofield FNAM="GV_SYTEM_TARGET" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="5F" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="103" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
     <dynprofield FNAM="CC_COMPARE_RESULT_ORIGIN" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="55" LINE="09" COLN="08" LANF="00" LBLK="00" LREP="00" AUTH="104" AGLT="01" ADEZ="01"/>
@@ -55,15 +65,6 @@
 
 PROCESS AFTER INPUT.
   MODULE user_command_3000.</dynproflowsource>
-   </dynpro>
-   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="2000" FNUM="2000" BZMX="0 " BZBR="0 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="175 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
-    <dynprofield FNAM="CC_WORKBENCH_COMPARE_RESULT" DIDX="001B" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="AF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
-    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
-    <dynproflowsource>PROCESS BEFORE OUTPUT.
-  MODULE status_2000.
-
-PROCESS AFTER INPUT.
-  MODULE user_command_2000.</dynproflowsource>
    </dynpro>
   </dynpros>
   <pfstatus>
@@ -475,6 +476,9 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; Affichage des ALV
     &quot; -----------------------------------------------------------
 
+    &quot; Change le nom de la table
+    gv_custo_tabname = lo_de_table_list-&gt;current_tabname.
+
     IF lo_de_table_list-&gt;o_salv IS BOUND.
       &quot; Liste de Table - Affichage
       lo_de_table_list-&gt;o_salv-&gt;display( ).
@@ -508,6 +512,12 @@ CLASS lcl_main IMPLEMENTATION.
 ***------------------------------------------------------------------***
     FIELD-SYMBOLS :
           &lt;lfs_t_table_list&gt; TYPE lcl_main=&gt;tt_compare_customizing_com.
+
+***------------------------------------------------------------------***
+**                            VARIABLES                               **
+***------------------------------------------------------------------***
+    DATA :
+      lv_tabix_tabname TYPE sy-tabix.
 
 ***==================================================================***
 **                           TRAITEMENT                               **
@@ -568,13 +578,25 @@ CLASS lcl_main IMPLEMENTATION.
               &quot;&quot;  --&gt; Arrêt du traitement
               RETURN.
 
+            ELSE.
+              &quot; Correspondance trouvée
+              &quot;&quot;  --&gt; Stocke sa position
+              lv_tabix_tabname = sy-tabix.
+
             ENDIF.
 
           ENDIF.
           IF &lt;lfs_s_table_list&gt; IS ASSIGNED.
-            &quot;&quot;  --&gt; Modification ligne sélectionée
+            &quot; Ici on va forcer la sélection de la ligne
+            &quot;&quot; Dans certain cas de navigation, sans la méthode &quot;REFRESH&quot;,
+            &quot;&quot; deux lignes pouvaient être sélectionnées, ce qui n&apos;était pas ergonomique
+
+            &quot;&quot;  --&gt; On force la déselection des lignes en rafraichissant la table
+            me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-o_salv-&gt;refresh( ).
+
+            &quot;&quot;  --&gt; Force la sélection sur la ligne en cours de visualisation
             lo_selections-&gt;set_selected_rows(
-              value = VALUE #( ( sy-tabix ) )
+              value = VALUE #( ( lv_tabix_tabname ) )
             ).
 
             &quot;&quot;  --&gt; Modification des tables de résultats
@@ -649,6 +671,18 @@ CLASS lcl_main IMPLEMENTATION.
     ENDIF.
 
     &quot; -----------------------------------------------------------
+    &quot; Contrôle
+    &quot; -----------------------------------------------------------
+
+    IF lv_tabname EQ
+      me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-current_tabname.
+      &quot; Pas de changement
+      &quot;&quot;  --&gt; Arrêt du traitement
+      RETURN.
+
+    ENDIF.
+
+    &quot; -----------------------------------------------------------
     &quot; Modifie le contenu des tables
     &quot; -----------------------------------------------------------
 
@@ -658,21 +692,20 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
     &quot; Traitement supplémentaire
     &quot; -----------------------------------------------------------
-    &quot; Ici, on triche :
-    &quot;   - Si IV_ROW est renseigné, c&apos;est qu&apos;on vient de l&apos;event
-    &quot;     du lien pour visualiser les données
-    &quot;&quot;  =&gt; On ne passe pas dans le PBO =&gt; On affiche les tables
-    &quot; -----------------------------------------------------------
 
-    IF me-&gt;ms_work_area_private-compare-customizing-display_element_content_origin-o_salv IS BOUND.
-      &quot; Affiche l&apos;ALV données d&apos;Origine
-      me-&gt;ms_work_area_private-compare-customizing-display_element_content_origin-o_salv-&gt;display( ).
+    &quot; Simule une action pour déclencher le PBO
+    cl_gui_cfw=&gt;set_new_ok_code( &apos;DUMMY&apos; ).                 &quot;#EC NOTEXT
 
-    ENDIF.
-
-    IF me-&gt;ms_work_area_private-compare-customizing-display_element_content_target-o_salv IS BOUND.
-      &quot; Affiche l&apos;ALV données Cible
-      me-&gt;ms_work_area_private-compare-customizing-display_element_content_target-o_salv-&gt;display( ).
+    &quot; Synchronisation Back &amp; Front
+    cl_gui_cfw=&gt;flush(
+      EXCEPTIONS
+        cntl_error = 1
+        cntl_system_error = 2
+    ).
+    IF sy-subrc NE 0.
+      &quot; Erreur
+      &quot;&quot;  --&gt; Tant pis
+      CLEAR : sy-subrc.
 
     ENDIF.
 
@@ -1992,11 +2025,12 @@ CLASS lcl_main IMPLEMENTATION.
             if_salv_c_selection_mode=&gt;single
           ).
 
-          &quot;&quot;  --&gt; Soubscription aux Evènements
+          &quot;&quot;  --&gt; Souscription aux Evènements
           lo_events = lo_de_table_list-&gt;o_salv-&gt;get_event( ).
           CREATE OBJECT lo_de_table_list-&gt;o_event_handler
             EXPORTING
               io_main       = me
+              iv_salv_id    = gc_salv_id-customizing-table_list
               io_salv_table = lo_de_table_list-&gt;o_salv.
           SET HANDLER lo_de_table_list-&gt;o_event_handler-&gt;on_link_click   FOR lo_events.
           SET HANDLER lo_de_table_list-&gt;o_event_handler-&gt;on_double_click FOR lo_events.
@@ -2136,7 +2170,7 @@ CLASS lcl_main IMPLEMENTATION.
               lo_column-&gt;set_long_text( CONV #( text-tis ) ).
               lo_column-&gt;set_short_text( CONV #( text-tis ) ).
               lo_column-&gt;set_medium_text( CONV #( text-tis ) ).
-              lo_column-&gt;set_output_length( 20 ).
+              lo_column-&gt;set_output_length( 16 ).
 
             CATCH cx_root.                              &quot;#EC NO_HANDLER
               &quot; Erreur
@@ -2161,7 +2195,7 @@ CLASS lcl_main IMPLEMENTATION.
               lo_column-&gt;set_long_text( CONV #( text-tcd ) ).
               lo_column-&gt;set_short_text( CONV #( text-tcd ) ).
               lo_column-&gt;set_medium_text( CONV #( text-tcd ) ).
-              lo_column-&gt;set_output_length( 25 ).
+              lo_column-&gt;set_output_length( 18 ).
 
             CATCH cx_root.                              &quot;#EC NO_HANDLER
               &quot; Erreur
@@ -2267,16 +2301,16 @@ CLASS lcl_main IMPLEMENTATION.
           &quot; Dans le cas du rechargement de la table
           &quot;&quot;  --&gt; Libère les éléments du Container
           lo_display_element-&gt;o_container-&gt;free( ).
-          cl_gui_cfw=&gt;flush(
-            EXCEPTIONS
-              cntl_error        = 1
-              cntl_system_error = 2
-          ).
-          IF sy-subrc NE 0.
-            &quot; Erreur refresh
-            &quot;&quot;  --&gt; Tant pis ...
-
-          ENDIF.
+*          cl_gui_cfw=&gt;flush(
+*            EXCEPTIONS
+*              cntl_error        = 1
+*              cntl_system_error = 2
+*          ).
+*          IF sy-subrc NE 0.
+*            &quot; Erreur refresh
+*            &quot;&quot;  --&gt; Tant pis ...
+*
+*          ENDIF.
 
         ENDIF.
 
@@ -2435,6 +2469,10 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
     &quot; Pré-Traitement
     &quot; -----------------------------------------------------------
+
+    &quot; Renseigne la table courrante
+    me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-current_tabname
+      = gv_custo_tabname = iv_tabname.
 
     &quot; Raccourci syntaxique
     lo_de_content_origin = REF #( me-&gt;ms_work_area_private-compare-customizing-display_element_content_origin ).
@@ -3361,15 +3399,88 @@ CLASS lcl_customizing_handle_events IMPLEMENTATION.
     &quot; Initialisation attributs
     &quot; -----------------------------------------------------------
 
-    &quot; Grille ALV
-    me-&gt;mo_salv_table = io_salv_table.
-
     &quot; Instance principale
     me-&gt;mo_main = io_main.
+
+    &quot; ID de l&apos;ALV
+    me-&gt;mv_salv_id = iv_salv_id.
+
+    &quot; Grille ALV
+    me-&gt;mo_salv_table = io_salv_table.
 
   ENDMETHOD.
 
   METHOD on_link_click.
+
+***------------------------------------------------------------------***
+**                            VARIABLES                               **
+***------------------------------------------------------------------***
+    DATA :
+      lv_method TYPE string.
+
+***==================================================================***
+**                             TRAITEMENT                             **
+***==================================================================***
+
+    TRY.
+        &quot; -----------------------------------------------------------
+        &quot; Oriente le traitement en fonction de l&apos;ID de l&apos;ALV
+        &quot; -----------------------------------------------------------
+
+        &quot; Initialisation du Nom de la méthode
+        lv_method = |_ON_LINK_CLICK_{ me-&gt;mv_salv_id }|. &quot;#EC NOTEXT   &quot;#EC NOTEXT
+
+        &quot; Appel de la méthode
+        CALL METHOD me-&gt;(lv_method)
+          EXPORTING
+            iv_row    = row
+            iv_column = column.
+
+      CATCH cx_root.
+        &quot; Erreur lors de l&apos;appel de la méthode
+        &quot;&quot;  --&gt; Arrêt du traitement
+        RETURN.
+
+    ENDTRY.
+
+  ENDMETHOD.
+
+  METHOD on_double_click.
+
+***------------------------------------------------------------------***
+**                            VARIABLES                               **
+***------------------------------------------------------------------***
+    DATA :
+      lv_method TYPE string.
+
+***==================================================================***
+**                             TRAITEMENT                             **
+***==================================================================***
+
+    TRY.
+        &quot; -----------------------------------------------------------
+        &quot; Oriente le traitement en fonction de l&apos;ID de l&apos;ALV
+        &quot; -----------------------------------------------------------
+
+        &quot; Initialisation du Nom de la méthode
+        lv_method = |_ON_DOUBLE_CLICK_{ me-&gt;mv_salv_id }|. &quot;#EC NOTEXT   &quot;#EC NOTEXT
+
+        &quot; Appel de la méthode
+        CALL METHOD me-&gt;(lv_method)
+          EXPORTING
+            iv_row    = row
+            iv_column = column.
+
+      CATCH cx_root.
+        &quot; Erreur lors de l&apos;appel de la méthode
+        &quot;&quot;  --&gt; Arrêt du traitement
+        RETURN.
+
+    ENDTRY.
+
+  ENDMETHOD.
+
+  METHOD _on_link_click_custo_tl.
 
 ***==================================================================***
 **                             TRAITEMENT                             **
@@ -3380,37 +3491,48 @@ CLASS lcl_customizing_handle_events IMPLEMENTATION.
     &quot; -----------------------------------------------------------
 
     &quot; Suivant la Colonne
-    CASE column.
+    CASE iv_column.
 
       WHEN &apos;DISPLAY_ICON&apos;.                                  &quot;#EC NOTEXT
         &quot; Affichage
         &quot;&quot;  --&gt; Force la sélection de la ligne
         me-&gt;mo_salv_table-&gt;get_selections( )-&gt;set_selected_rows(
-          VALUE #( ( row ) )
+          VALUE #( ( iv_row ) )
         ).
 
         &quot;&quot;  --&gt; Modifie les données affichées
-        me-&gt;mo_main-&gt;customizing_on_change_line( iv_row = row ).
+        me-&gt;mo_main-&gt;customizing_on_change_line( iv_row = iv_row ).
 
       WHEN OTHERS.
 
     ENDCASE.
 
-  ENDMETHOD.                    &quot;on_single_click
+  ENDMETHOD.                    &quot;_on_link_click_custo_tl
 
-  METHOD on_double_click.
+  METHOD _on_double_click_custo_tl.
 
 ***==================================================================***
-**                           TRAITEMENT                               **
+**                             TRAITEMENT                             **
 ***==================================================================***
 
     &quot; -----------------------------------------------------------
-    &quot; LOG
+    &quot; Suivant l&apos;élément
     &quot; -----------------------------------------------------------
 
+    &quot; Modifie les données affichées
+    me-&gt;mo_main-&gt;customizing_on_change_line( iv_row = iv_row ).
 
+    &quot; Suivant la Colonne
+    CASE iv_column.
 
-  ENDMETHOD.
+      WHEN &apos;TABNAME&apos;.                                       &quot;#EC NOTEXT
+        &quot; Nom de la table
+
+      WHEN OTHERS.
+
+    ENDCASE.
+
+  ENDMETHOD.                    &quot;_on_double_click_custo_tl
 
 ENDCLASS.                    &quot;lcl_customizing_handle_events IMPLEMENTATION</source>
  </PROG>
@@ -3424,6 +3546,17 @@ ENDCLASS.                    &quot;lcl_customizing_handle_events IMPLEMENTATION<
 *&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_C01
 *&amp;---------------------------------------------------------------------*
 
+CONSTANTS :
+  BEGIN OF gc_salv_id,
+    BEGIN OF customizing,
+      table_list TYPE string VALUE &apos;CUSTO_TL&apos;,
+      origin     TYPE string VALUE &apos;CUSTO_OR&apos;,
+      target     TYPE string VALUE &apos;CUSTO_TA&apos;,
+    END OF  customizing,
+    BEGIN OF workbench,
+      result TYPE string VALUE &apos;WKB_RE&apos;,
+    END OF   workbench,
+  END OF gc_salv_id.
 
 *----------------------------------------------------------------------*
 *       CLASS LCL_main DEFINIION
@@ -3558,18 +3691,18 @@ CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
       BEGIN OF ts_compare_customizing_com,
         display_icon               TYPE icon_d,
         tabname                    TYPE dd02l-tabname,
-        compare_error              TYPE xsdboolean,
-        compare_error_icon         TYPE icon_d,
+        no_content_difference      TYPE xsdboolean,
+        no_content_difference_icon TYPE icon_d,
         exist_in_origin            TYPE xsdboolean,
         exist_in_origin_icon       TYPE icon_d,
         exist_in_target            TYPE xsdboolean,
         exist_in_target_icon       TYPE icon_d,
-        no_common_fields           TYPE xsdboolean,
-        no_common_fields_icon      TYPE icon_d,
         identical_structure        TYPE xsdboolean,
         identical_structure_icon   TYPE icon_d,
-        no_content_difference      TYPE xsdboolean,
-        no_content_difference_icon TYPE icon_d,
+        no_common_fields           TYPE xsdboolean,
+        no_common_fields_icon      TYPE icon_d,
+        compare_error              TYPE xsdboolean,
+        compare_error_icon         TYPE icon_d,
         message                    TYPE bapiret2-message,
       END OF   ts_compare_customizing_com.
 
@@ -3631,6 +3764,7 @@ CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
         o_salv          TYPE REF TO cl_salv_table,
         o_container     TYPE REF TO cl_gui_container,
         o_event_handler TYPE REF TO lcl_customizing_handle_events,
+        current_tabname TYPE string,
         ot_display_data TYPE REF TO data,
       END OF   ts_compare_customizing_de_tab.
 
@@ -3848,6 +3982,7 @@ CLASS lcl_customizing_handle_events DEFINITION.
     METHODS constructor
       IMPORTING
         !io_main       TYPE REF TO lcl_main
+        !iv_salv_id    TYPE clike
         !io_salv_table TYPE REF TO cl_salv_table.
 
     &quot; Handler - Lien
@@ -3866,6 +4001,16 @@ CLASS lcl_customizing_handle_events DEFINITION.
 
 *-- Privée
   PRIVATE SECTION.
+
+    &quot; Handler - Lien - Custo Liste de table
+    METHODS _on_link_click_custo_tl
+      IMPORTING !iv_row    TYPE salv_de_row
+                !iv_column TYPE salv_de_column.
+
+    &quot; Handler - Double-Clique - Custo Liste de table
+    METHODS _on_double_click_custo_tl
+      IMPORTING !iv_row    TYPE salv_de_row
+                !iv_column TYPE salv_de_column.
 
 ***------------------------------------------------------------------***
 **                              TYPES                                 **
@@ -4122,8 +4267,6 @@ CLASS lcl_customizing_handle_events DEFINITION DEFERRED.
 **                            STRUCTURE                               **
 ***------------------------------------------------------------------***
 
-DATA : gv_sytem_target TYPE string.
-DATA : gv_sytem_origin TYPE string.
 
 ***------------------------------------------------------------------***
 **                            INSTANCES                               **
@@ -4135,6 +4278,9 @@ DATA :
 **                            VARIABLES                               **
 ***------------------------------------------------------------------***
 
+DATA : gv_sytem_target TYPE string.
+DATA : gv_sytem_origin TYPE string.
+DATA : gv_custo_tabname TYPE string.
 
 ***------------------------------------------------------------------***
 **                          FIELD-SYMBOLS                             **
