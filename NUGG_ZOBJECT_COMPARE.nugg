@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<nugget name="ZCOMPARE_OBJECT">
+<nugget name="ZOBJECT_COMPARE">
  <PROG NAME="Z_A_BC_COMPARE_OBJECT" VARCL="X" SUBC="1" APPL="*" RSTAT="K" RMAND="200" RLOAD="F" FIXPT="X" UCCHECK="X">
   <textPool>
    <language SPRAS="F">
@@ -25,6 +25,8 @@
     <textElement ID="I" KEY="TNF" ENTRY="Pas de champs en commun" LENGTH="46 "/>
     <textElement ID="I" KEY="TNR" ENTRY="Non lisible" LENGTH="21 "/>
     <textElement ID="I" KEY="TNV" ENTRY="Non versionnable" LENGTH="26 "/>
+    <textElement ID="I" KEY="TSO" ENTRY="Système Origine" LENGTH="25 "/>
+    <textElement ID="I" KEY="TST" ENTRY="Système Cible" LENGTH="23 "/>
     <textElement ID="R" ENTRY="Utilitaire : Comparaison version objets" LENGTH="39 "/>
     <textElement ID="S" KEY="P_CUSTO" ENTRY="        Customizing" LENGTH="19 "/>
     <textElement ID="S" KEY="P_ONLY_C" ENTRY="        Uniquement objet commun" LENGTH="31 "/>
@@ -103,6 +105,7 @@ PROCESS AFTER INPUT.
 *&amp;---------------------------------------------------------------------*
 *&amp;---------------------------------------------------------------------*
 *                                                                      *
+
 REPORT z_a_bc_compare_object.
 
 &quot; Include - Définition Types / Globales
@@ -422,12 +425,12 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; Suivant l&apos;action utilisateur
     CASE sy-ucomm.
 
-      WHEN &apos;EXIT&apos;. ##NOTEXT
+      WHEN lcl_main=&gt;mc_ucomm-common-exit.
         &quot; Retour
         &quot;&quot;  --&gt; Retour à l&apos;écran précédent
         LEAVE TO SCREEN 0.
 
-      WHEN &apos;LEAVE&apos;. ##NOTEXT
+      WHEN lcl_main=&gt;mc_ucomm-common-leave.
         &quot; Quitter
         &quot;&quot;  --&gt; Arrêt du programme
         LEAVE PROGRAM.
@@ -530,17 +533,18 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; Suivant l&apos;action utilisateur
     CASE sy-ucomm.
 
-      WHEN &apos;EXIT&apos;. ##NOTEXT
+      WHEN lcl_main=&gt;mc_ucomm-common-exit.
         &quot; Retour
         &quot;&quot;  --&gt; Retour à l&apos;écran d&apos;acceuil
         LEAVE TO SCREEN 0.
 
-      WHEN &apos;LEAVE&apos;. ##NOTEXT
+      WHEN lcl_main=&gt;mc_ucomm-common-leave.
         &quot; Quitter
         &quot;&quot;  --&gt; Arrêt du programme
         LEAVE PROGRAM.
 
-      WHEN &apos;PREVIOUS&apos; OR &apos;NEXT&apos;. ##NOTEXT
+      WHEN lcl_main=&gt;mc_ucomm-customizing-next
+        OR lcl_main=&gt;mc_ucomm-customizing-previous.
         &quot; Entrée précédente // Suivante
         &quot;&quot;  --&gt; Récupération Index actuellement sélectioné
         lo_selections = me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-o_salv-&gt;get_selections( ).
@@ -552,7 +556,7 @@ CLASS lcl_main IMPLEMENTATION.
               TO &lt;lfs_t_table_list&gt;.
           IF sy-subrc EQ 0.
             &quot; Vérifie présence de ligne Avant / Après
-            IF sy-ucomm EQ &apos;PREVIOUS&apos;.
+            IF sy-ucomm EQ lcl_main=&gt;mc_ucomm-customizing-previous.
               &quot; Entrée précédente
               SUBTRACT 1 FROM ls_selected_rows.
 
@@ -694,7 +698,7 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
 
     &quot; Simule une action pour déclencher le PBO
-    cl_gui_cfw=&gt;set_new_ok_code( &apos;DUMMY&apos; ).                 &quot;#EC NOTEXT
+    cl_gui_cfw=&gt;set_new_ok_code( lcl_main=&gt;mc_ucomm-common-dummy ).                 &quot;#EC NOTEXT
 
     &quot; Synchronisation Back &amp; Front
     cl_gui_cfw=&gt;flush(
@@ -749,9 +753,9 @@ CLASS lcl_main IMPLEMENTATION.
 
     &quot; Initialisation variable d&apos;affichage
     me-&gt;ms_work_area_private-compare-system-origin-&gt;* =
-      |Système Origine : { me-&gt;ms_selection_criteria-system-ov_origin-&gt;* }|.
+      |{ text-tso } : { me-&gt;ms_selection_criteria-system-ov_origin-&gt;* }|.
     me-&gt;ms_work_area_private-compare-system-target-&gt;* =
-      |Système Cible : { me-&gt;ms_selection_criteria-system-ov_target-&gt;* }|.
+      |{ text-tst } : { me-&gt;ms_selection_criteria-system-ov_target-&gt;* }|.
 
   ENDMETHOD.
 
@@ -872,7 +876,7 @@ CLASS lcl_main IMPLEMENTATION.
     IF me-&gt;ms_work_area_private-object-workbench-t_devclass[] IS INITIAL.
       &quot; Aucun Package récupéré
       &quot;&quot;  --&gt; Arrêt du traitement
-      MESSAGE s004(ab) DISPLAY LIKE if_msg_output=&gt;msgtype_error.
+      MESSAGE s889(tk) DISPLAY LIKE if_msg_output=&gt;msgtype_error.
       rv_subrc = 2.
       RETURN.
 
@@ -1942,7 +1946,6 @@ CLASS lcl_main IMPLEMENTATION.
           ELSE text-s00
       ).
 
-
       &quot; Existe système origine - Initialisation Icône
       &lt;lfs_s_compare_result&gt;-exist_in_origin_icon = SWITCH #(
         &lt;lfs_s_compare_result&gt;-exist_in_origin
@@ -2030,7 +2033,7 @@ CLASS lcl_main IMPLEMENTATION.
           CREATE OBJECT lo_de_table_list-&gt;o_event_handler
             EXPORTING
               io_main       = me
-              iv_salv_id    = gc_salv_id-customizing-table_list
+              iv_salv_id    = lcl_main=&gt;mc_salv_id-customizing-table_list
               io_salv_table = lo_de_table_list-&gt;o_salv.
           SET HANDLER lo_de_table_list-&gt;o_event_handler-&gt;on_link_click   FOR lo_events.
           SET HANDLER lo_de_table_list-&gt;o_event_handler-&gt;on_double_click FOR lo_events.
@@ -3104,6 +3107,8 @@ CLASS lcl_main IMPLEMENTATION.
 **                           TRAITEMENT                               **
 ***==================================================================***
 
+    REFRESH : et_component.
+
     &quot; -----------------------------------------------------------
     &quot; Contrôle
     &quot; -----------------------------------------------------------
@@ -3261,6 +3266,8 @@ CLASS lcl_main IMPLEMENTATION.
 ***==================================================================***
 **                           TRAITEMENT                               **
 ***==================================================================***
+
+    REFRESH : et_data_export.
 
     &quot; -----------------------------------------------------------
     &quot; Initialisation table de sortie
@@ -3546,17 +3553,6 @@ ENDCLASS.                    &quot;lcl_customizing_handle_events IMPLEMENTATION<
 *&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_C01
 *&amp;---------------------------------------------------------------------*
 
-CONSTANTS :
-  BEGIN OF gc_salv_id,
-    BEGIN OF customizing,
-      table_list TYPE string VALUE &apos;CUSTO_TL&apos;,
-      origin     TYPE string VALUE &apos;CUSTO_OR&apos;,
-      target     TYPE string VALUE &apos;CUSTO_TA&apos;,
-    END OF  customizing,
-    BEGIN OF workbench,
-      result TYPE string VALUE &apos;WKB_RE&apos;,
-    END OF   workbench,
-  END OF gc_salv_id.
 
 *----------------------------------------------------------------------*
 *       CLASS LCL_main DEFINIION
@@ -3620,6 +3616,33 @@ CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
 
 *	Déclaration d&apos;attributs
 
+    &quot; Constantes ID ALV
+    CONSTANTS :
+      BEGIN OF mc_salv_id,
+        BEGIN OF customizing,
+          table_list TYPE string VALUE &apos;CUSTO_TL&apos;,          &quot;#EC NOTEXT
+          origin     TYPE string VALUE &apos;CUSTO_OR&apos;,          &quot;#EC NOTEXT
+          target     TYPE string VALUE &apos;CUSTO_TA&apos;,          &quot;#EC NOTEXT
+        END OF  customizing,
+        BEGIN OF workbench,
+          result TYPE string VALUE &apos;WKB_RE&apos;,                &quot;#EC NOTEXT
+        END OF   workbench,
+      END OF mc_salv_id.
+
+    &quot; Constantes Action Utilisateur
+    CONSTANTS :
+      BEGIN OF mc_ucomm,
+        BEGIN OF common,
+          exit  TYPE sy-ucomm VALUE &apos;EXIT&apos;,                 &quot;#EC NOTEXT
+          leave TYPE sy-ucomm VALUE &apos;LEAVE&apos;,                &quot;#EC NOTEXT
+          dummy TYPE sy-ucomm VALUE &apos;DUMMY&apos;,                &quot;#EC NOTEXT
+        END OF common,
+        BEGIN OF customizing,
+          next     TYPE sy-ucomm VALUE &apos;NEXT&apos;,              &quot;#EC NOTEXT
+          previous TYPE sy-ucomm VALUE &apos;PREVIOUS&apos;,          &quot;#EC NOTEXT
+        END OF customizing,
+      END OF mc_ucomm.
+
 *-- Privée
   PRIVATE SECTION.
 
@@ -3628,6 +3651,11 @@ CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
 ***------------------------------------------------------------------***
 
 *   Déclaration de type
+    TYPES :
+      BEGIN OF ts_compare_title_box,
+        origin TYPE REF TO string,
+        target TYPE REF TO string,
+      END OF   ts_compare_title_box.
 
     TYPES :
       BEGIN OF ts_selection_criteria_workb,
@@ -3795,7 +3823,7 @@ CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
 
     TYPES :
       BEGIN OF ts_work_area_compare,
-        system      TYPE ts_compare_title_box BOXED,
+        system      TYPE lcl_main=&gt;ts_compare_title_box BOXED,
         workbench   TYPE lcl_main=&gt;ts_wa_compare_workbench BOXED,
         customizing TYPE lcl_main=&gt;ts_wa_compare_customizing BOXED,
       END OF   ts_work_area_compare.
@@ -4221,11 +4249,6 @@ SELECTION-SCREEN END OF BLOCK b5.</source>
 *&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_TOP
 *&amp;---------------------------------------------------------------------*
 
-TYPES :
-  BEGIN OF ts_compare_title_box,
-    origin TYPE REF TO string,
-    target TYPE REF TO string,
-  END OF   ts_compare_title_box.
 
 ***------------------------------------------------------------------***
 **                             INCLUDE                                **
@@ -4286,9 +4309,9 @@ DATA : gv_custo_tabname TYPE string.
 **                          FIELD-SYMBOLS                             **
 ***------------------------------------------------------------------***</source>
  </PROG>
- <TRAN TCODE="ZCOMPARE_OBJECT" PGMNA="Z_A_BC_COMPARE_OBJECT" DYPNO="1000" CINFO="80">
-  <tstct SPRSL="F" TCODE="ZCOMPARE_OBJECT" TTEXT="Comparaison d&apos;objet"/>
-  <tstcc TCODE="ZCOMPARE_OBJECT" S_WEBGUI="1" S_WIN32="X" S_PLATIN="X"/>
+ <TRAN TCODE="ZOBJECT_COMPARE" PGMNA="Z_A_BC_COMPARE_OBJECT" DYPNO="1000" CINFO="80">
+  <tstct SPRSL="F" TCODE="ZOBJECT_COMPARE" TTEXT="Comparaison d&apos;objet"/>
+  <tstcc TCODE="ZOBJECT_COMPARE" S_WEBGUI="1" S_WIN32="X" S_PLATIN="X"/>
   <tstcp/>
   <rsstcd ST_PROG="X" DEVCLASS="$TMP"/>
  </TRAN>
