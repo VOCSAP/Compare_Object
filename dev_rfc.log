@@ -1,0 +1,10 @@
+
+**** Log file opened at 2021-06-18 11:34:34.685160 UTC+02:00 (Paris, Madrid), Encoding UTF-8
+NW RFC Library: Kernel variant, Release 750 Patch Level 7, Compiled on Dec 21 2020 20:35:39
+ CPIC library: 753.2020.10.14 version 3, NI library: 40, Kernel Release: 753 Patch Level 724
+ Current working directory: C:\Users\olvehier\OneDrive\Travail\SAP\Documentation\ABAP\Source Code\Github\Compare_Object, Program: gneux
+ Hardware: PC with Windows NT 8x Intel 80686 (Mod 142 Step 10), Operating_system: Windows NT 10.0
+ Hostname: PORTW19115, IP address: 10.3.252.36, IPv6 address: fe80::84a6:4a7:d41d:68f7
+
+2021-06-18 11:34:34.685425 [17088] >> Info entry
+	Did not find config file C:\Users\olvehier\OneDrive\Travail\SAP\Documentation\ABAP\Source Code\Github\Compare_Object\sapnwrfc.ini.
