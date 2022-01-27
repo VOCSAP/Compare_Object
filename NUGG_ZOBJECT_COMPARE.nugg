@@ -1,165 +1,587 @@
 <?xml version="1.0" encoding="utf-8"?>
 <nugget name="ZOBJECT_COMPARE">
- <PROG NAME="Z_A_BC_COMPARE_OBJECT" VARCL="X" SUBC="1" APPL="*" RSTAT="K" RMAND="200" RLOAD="F" FIXPT="X" UCCHECK="X">
+ <PROG NAME="Z_A_BC_COMPARE_OBJECT_C01" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
   <textPool>
    <language SPRAS="F">
-    <textElement ID="I" KEY="E00" ENTRY="@0A@" LENGTH="14 "/>
-    <textElement ID="I" KEY="I00" ENTRY="@09@" LENGTH="14 "/>
-    <textElement ID="I" KEY="ICD" ENTRY="@10@" LENGTH="14 "/>
-    <textElement ID="I" KEY="NOC" ENTRY="Table inexistante" LENGTH="68 "/>
-    <textElement ID="I" KEY="S00" ENTRY="@08@" LENGTH="14 "/>
-    <textElement ID="I" KEY="TB1" ENTRY="Système à comparer" LENGTH="28 "/>
-    <textElement ID="I" KEY="TB2" ENTRY="Objets à comparer" LENGTH="42 "/>
-    <textElement ID="I" KEY="TB3" ENTRY="Workbench - Critère de sélection" LENGTH="64 "/>
-    <textElement ID="I" KEY="TB4" ENTRY="Customizing - Critère de sélection" LENGTH="68 "/>
-    <textElement ID="I" KEY="TB5" ENTRY="Options de comparaison" LENGTH="44 "/>
-    <textElement ID="I" KEY="TB6" ENTRY="Options pour Customizing" LENGTH="46 "/>
-    <textElement ID="I" KEY="TCD" ENTRY="Similarité de contenu" LENGTH="56 "/>
-    <textElement ID="I" KEY="TCE" ENTRY="Statut comparaison" LENGTH="28 "/>
-    <textElement ID="I" KEY="TEO" ENTRY="Existe dans système origine" LENGTH="50 "/>
-    <textElement ID="I" KEY="TEQ" ENTRY="Equivalent" LENGTH="20 "/>
-    <textElement ID="I" KEY="TET" ENTRY="Existe dans système cible" LENGTH="50 "/>
-    <textElement ID="I" KEY="TIC" ENTRY="Statut" LENGTH="16 "/>
-    <textElement ID="I" KEY="TIS" ENTRY="Structure identique" LENGTH="29 "/>
-    <textElement ID="I" KEY="TNC" ENTRY="Non comparable" LENGTH="24 "/>
-    <textElement ID="I" KEY="TNF" ENTRY="Pas de champs en commun" LENGTH="46 "/>
-    <textElement ID="I" KEY="TNR" ENTRY="Non lisible" LENGTH="21 "/>
-    <textElement ID="I" KEY="TNV" ENTRY="Non versionnable" LENGTH="26 "/>
-    <textElement ID="I" KEY="TSO" ENTRY="Système Origine" LENGTH="25 "/>
-    <textElement ID="I" KEY="TST" ENTRY="Système Cible" LENGTH="23 "/>
-    <textElement ID="R" ENTRY="Utilitaire : Comparaison version objets" LENGTH="39 "/>
-    <textElement ID="S" KEY="P_CUSTO" ENTRY="        Customizing" LENGTH="19 "/>
-    <textElement ID="S" KEY="P_ONLY_C" ENTRY="        Uniquement objet commun" LENGTH="31 "/>
-    <textElement ID="S" KEY="P_ONLY_D" ENTRY="        Afficher uniq. différence" LENGTH="33 "/>
-    <textElement ID="S" KEY="P_RFC_O" ENTRY="        Système origine" LENGTH="23 "/>
-    <textElement ID="S" KEY="P_RFC_T" ENTRY="        Système cible" LENGTH="21 "/>
-    <textElement ID="S" KEY="P_SIDEN" ENTRY="        Comparaison à str. identique" LENGTH="36 "/>
-    <textElement ID="S" KEY="P_T_ALL" ENTRY="        Tout type de table" LENGTH="26 "/>
-    <textElement ID="S" KEY="P_WORKB" ENTRY="        Workbench" LENGTH="17 "/>
-    <textElement ID="S" KEY="S_FUNCN" ENTRY="D       ." LENGTH="23 "/>
-    <textElement ID="S" KEY="S_PACK" ENTRY="D       ." LENGTH="15 "/>
-    <textElement ID="S" KEY="S_PROGN" ENTRY="D       ." LENGTH="19 "/>
-    <textElement ID="S" KEY="S_TABN" ENTRY="D       ." LENGTH="20 "/>
+    <textElement ID="R" ENTRY="Include Z_A_BC_POST_REFRESH_CHECK_C01" LENGTH="37 "/>
    </language>
   </textPool>
-  <dynpros>
-   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="2000" FNUM="2000" BZMX="0 " BZBR="0 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="175 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
-    <dynprofield FNAM="CC_WORKBENCH_COMPARE_RESULT" DIDX="001B" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="AF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
-    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
-    <dynproflowsource>PROCESS BEFORE OUTPUT.
-  MODULE status_2000.
-
-PROCESS AFTER INPUT.
-  MODULE user_command_2000.</dynproflowsource>
-   </dynpro>
-   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="3000" FNUM="3000" BZMX="26 " BZBR="185 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="186 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
-    <dynprofield FNAM="CC_TABLE_LIST" DIDX="0006" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="B8" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
-    <dynprofield FNAM="GV_CUSTO_TABNAME" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="39" FMB2="00" LENG="1E" LINE="07" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="______________________________"/>
-    <dynprofield FNAM="GV_SYTEM_ORIGIN" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="102" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
-    <dynprofield FNAM="GV_SYTEM_TARGET" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="5F" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="103" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
-    <dynprofield FNAM="CC_COMPARE_RESULT_ORIGIN" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="55" LINE="09" COLN="08" LANF="00" LBLK="00" LREP="00" AUTH="104" AGLT="01" ADEZ="01"/>
-    <dynprofield FNAM="CC_COMPARE_RESULT_TARGET" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="55" LINE="09" COLN="60" LANF="00" LBLK="00" LREP="00" AUTH="105" AGLT="01" ADEZ="01"/>
-    <dynprofield FNAM="BTN_PREVIOUS" DIDX="0003" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="04" LINE="11" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="106" AGLT="00" ADEZ="00" STXT="@0D@" RES1="                                                                                                                                                                        PREVIOUS"/>
-    <dynprofield FNAM="BTN_TEXT" DIDX="0003" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="07" LINE="11" COLN="B8" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="107" AGLT="00" ADEZ="00" STXT="@0E@" RES1="                                                                                                                                                                        NEXT"/>
-    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
-    <dynproflowsource>PROCESS BEFORE OUTPUT.
-  MODULE status_3000.
-
-PROCESS AFTER INPUT.
-  MODULE user_command_3000.</dynproflowsource>
-   </dynpro>
-  </dynpros>
-  <pfstatus>
-   <pfstatus_sta CODE="PF_STATUS_2000" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Workbench - Barre de Statut"/>
-   <pfstatus_sta CODE="PF_STATUS_3000" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Customizing - Barre de Statut"/>
-   <pfstatus_fun CODE="EXIT" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Retour"/>
-   <pfstatus_fun CODE="EXIT" TEXTNO="002" TEXT_TYPE="S" FUN_TEXT="Terminer"/>
-   <pfstatus_fun CODE="LEAVE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_CANCEL" ICON_ID="@0W@" FUN_TEXT="Interrompre"/>
-   <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="EXIT" FUNNO="001"/>
-   <pfstatus_pfk CODE="000001" PFNO="12" FUNCODE="LEAVE" FUNNO="001"/>
-   <pfstatus_pfk CODE="000001" PFNO="15" FUNCODE="EXIT" FUNNO="002"/>
-   <pfstatus_set STATUS="PF_STATUS_2000" FUNCTION="EXIT"/>
-   <pfstatus_set STATUS="PF_STATUS_2000" FUNCTION="LEAVE"/>
-   <pfstatus_set STATUS="PF_STATUS_3000" FUNCTION="EXIT"/>
-   <pfstatus_set STATUS="PF_STATUS_3000" FUNCTION="LEAVE"/>
-   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" INT_NOTE="Customizing - Barre de Statut"/>
-   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="Customizing - Barre de Statut"/>
-   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="Customizing - Barre de Statut"/>
-   <pfstatus_tit CODE="TITLEBAR_2000" TEXT="Workbench - Résultat comparaison"/>
-   <pfstatus_tit CODE="TITLEBAR_3000" TEXT="Customizing - Résultat comparaison"/>
-  </pfstatus>
   <source>*&amp;---------------------------------------------------------------------*
-*&amp; Programme       : Z_A_BC_POST_REFRESH_CHECK                         *
-*&amp; Description     : Comparaison d&apos;objets en masse                     *
-*                                                                      *
+*&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_C01
 *&amp;---------------------------------------------------------------------*
-*&amp;---------------------------------------------------------------------*
-*&amp; Créé par     : Olivier Véhier                                       *
-*                                                                      *
-*&amp; Créé le      : 10/06/2021                                           *
-*                                                                      *
-*&amp;---------------------------------------------------------------------*
-*&amp;---------------------------------------------------------------------*
-*&amp; Liste des modifications                                             *
-*&amp; Auteur      Date       Signature  Objet de la modification          *
-*&amp;---------------------------------------------------------------------*
-*&amp;---------------------------------------------------------------------*
-*                                                                      *
-
-REPORT z_a_bc_compare_object.
-
-&quot; Include - Définition Types / Globales
-INCLUDE z_a_bc_compare_object_top.
-
-&quot; Include - Ecran de sélection
-INCLUDE z_a_bc_compare_object_sel.
-
-&quot; Include - Classe - Définition
-INCLUDE z_a_bc_compare_object_c01.
-
-&quot; Include - Classe - Implémentation
-INCLUDE z_a_bc_compare_object_c02.
-
-&quot; Include - Routine
-INCLUDE z_a_bc_compare_object_f01.
-
-***==================================================================***
-**                           INITIALIZATION                           **
-***==================================================================***
-INITIALIZATION.
-  &quot; Initialisation
-  go_main = lcl_main=&gt;initialization( ).
-
-***==================================================================***
-**                         AT SELECTION-SCREEN                        **
-***==================================================================***
-AT SELECTION-SCREEN.
 
 
-***==================================================================***
-**                     AT SELECTION-SCREEN OUTPUT                     **
-***==================================================================***
-AT SELECTION-SCREEN OUTPUT.
-  &quot; Modification écran
-  go_main-&gt;selection_screen_ouput( ).
+*----------------------------------------------------------------------*
+*       CLASS LCL_main DEFINIION
+*----------------------------------------------------------------------*
+*
+*----------------------------------------------------------------------*
+CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
 
-***==================================================================***
-**                         START-OF-SELECTION                         **
-***==================================================================***
-START-OF-SELECTION.
+*-- Publique
+  PUBLIC SECTION.
 
-***==================================================================***
-**                             TRAITEMENT                             **
-***==================================================================***
+***------------------------------------------------------------------***
+**                              TYPES                                 **
+***------------------------------------------------------------------***
 
-  &quot; -----------------------------------------------------------
-  &quot; Traitement
-  &quot; -----------------------------------------------------------
+*   Déclaration de type
 
-  &quot; Traitement principal
-  go_main-&gt;start_of_selection( ).
+***------------------------------------------------------------------***
+**                           MÉTHODES                                 **
+***------------------------------------------------------------------***
 
-END-OF-SELECTION.</source>
+*	Déclaration de méthodes
+
+    &quot; Constructeur statique
+    CLASS-METHODS class_constructor.
+
+    &quot; Initialisation
+    CLASS-METHODS initialization
+      RETURNING VALUE(ro_main) TYPE REF TO lcl_main.
+
+    &quot; Modification Ecran de sélection
+    METHODS selection_screen_ouput.
+
+    &quot; Traitement
+    METHODS start_of_selection
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Workbench - PBO
+    METHODS status_2000.
+
+    &quot; Workbench - User Command
+    METHODS user_command_2000.
+
+    &quot; Workbench - PBO
+    METHODS status_3000.
+
+    &quot; Customizing - User Command
+    METHODS user_command_3000.
+
+    &quot; Customizing - Lors du changement de ligne
+    METHODS customizing_on_change_line
+      IMPORTING
+        !iv_row     TYPE int4 OPTIONAL
+        !iv_tabname TYPE clike OPTIONAL
+          PREFERRED PARAMETER !iv_tabname.
+
+    &quot; Appel transaction SE11
+    METHODS ddic_transaction_display_table
+      IMPORTING
+        !iv_row TYPE int4.
+
+***------------------------------------------------------------------***
+**                            ATTRIBUTS                               **
+***------------------------------------------------------------------***
+
+*	Déclaration d&apos;attributs
+
+    &quot; Constantes ID ALV
+    CONSTANTS :
+      BEGIN OF mc_salv_id,
+        BEGIN OF customizing,
+          table_list TYPE string VALUE &apos;CUSTO_TL&apos;,          &quot;#EC NOTEXT
+          origin     TYPE string VALUE &apos;CUSTO_OR&apos;,          &quot;#EC NOTEXT
+          target     TYPE string VALUE &apos;CUSTO_TA&apos;,          &quot;#EC NOTEXT
+        END OF  customizing,
+        BEGIN OF workbench,
+          result TYPE string VALUE &apos;WKB_RE&apos;,                &quot;#EC NOTEXT
+        END OF   workbench,
+      END OF mc_salv_id.
+
+    &quot; Constantes Action Utilisateur
+    CONSTANTS :
+      BEGIN OF mc_ucomm,
+        BEGIN OF common,
+          exit  TYPE sy-ucomm VALUE &apos;EXIT&apos;,                 &quot;#EC NOTEXT
+          leave TYPE sy-ucomm VALUE &apos;LEAVE&apos;,                &quot;#EC NOTEXT
+          dummy TYPE sy-ucomm VALUE &apos;DUMMY&apos;,                &quot;#EC NOTEXT
+        END OF common,
+        BEGIN OF customizing,
+          next      TYPE sy-ucomm VALUE &apos;NEXT&apos;,             &quot;#EC NOTEXT
+          previous  TYPE sy-ucomm VALUE &apos;PREVIOUS&apos;,         &quot;#EC NOTEXT
+          read_more TYPE sy-ucomm VALUE &apos;READ_MORE&apos;,        &quot;#EC NOTEXT
+        END OF customizing,
+        BEGIN OF workbench,
+          save TYPE sy-ucomm VALUE &apos;SAVE&apos;,                  &quot;#EC NOTEXT
+        END OF workbench,
+      END OF mc_ucomm.
+
+*    CONSTANTS : mc_archive_type TYPE zed_archive_type VALUE &apos;OBJ_COMP&apos;. &quot;#EC NOTEXT
+
+*-- Privée
+  PRIVATE SECTION.
+
+***------------------------------------------------------------------***
+**                              TYPES                                 **
+***------------------------------------------------------------------***
+
+*   Déclaration de type
+    TYPES :
+      BEGIN OF ts_compare_title_box,
+        origin        TYPE REF TO string,
+        target        TYPE REF TO string,
+        detail_origin TYPE REF TO string,
+        detail_target TYPE REF TO string,
+        lines_to_read TYPE REF TO sy-tabix,
+      END OF   ts_compare_title_box.
+
+    TYPES :
+      BEGIN OF ts_selection_criteria_workb,
+        ov_activ    TYPE REF TO xsdboolean,
+        or_devclass LIKE REF TO s_pack[],
+        or_obj_name LIKE REF TO s_progn[],
+        or_funcname LIKE REF TO s_funcn[],
+      END OF   ts_selection_criteria_workb.
+
+    TYPES :
+      BEGIN OF ts_selection_criteria_custo,
+        ov_activ        TYPE REF TO xsdboolean,
+        or_tabname      LIKE REF TO s_tabn[],
+        ov_rowcount     TYPE REF TO soid-accnt,
+        ov_partial_read TYPE REF TO xsdboolean,
+      END OF   ts_selection_criteria_custo.
+
+    TYPES :
+      BEGIN OF ts_selection_criteria_system,
+        ov_origin TYPE REF TO vers_dest-rfcdest,
+        ov_target TYPE REF TO vers_dest-rfcdest,
+      END OF   ts_selection_criteria_system.
+
+    TYPES :
+      BEGIN OF ts_selection_criteria_opt_comp,
+        ov_all_type                 TYPE REF TO xsdboolean,
+        ov_only_difference          TYPE REF TO xsdboolean,
+        ov_only_object_commun       TYPE REF TO xsdboolean,
+        ov_compare_identical_struct TYPE REF TO xsdboolean,
+      END OF   ts_selection_criteria_opt_comp.
+
+    TYPES :
+      BEGIN OF ts_selection_criteria,
+        system         TYPE lcl_main=&gt;ts_selection_criteria_system,
+        workbench      TYPE lcl_main=&gt;ts_selection_criteria_workb,
+        customizing    TYPE lcl_main=&gt;ts_selection_criteria_custo,
+        compare_option TYPE lcl_main=&gt;ts_selection_criteria_opt_comp,
+      END OF   ts_selection_criteria.
+
+    TYPES :
+      BEGIN OF ts_wa_object_workbench,
+        t_devclass          TYPE btfr_package_tt,
+        t_object_to_compare TYPE scwb_t_e071,
+        t_only_origin       TYPE scwb_t_e071,
+        t_only_target       TYPE scwb_t_e071,
+      END OF   ts_wa_object_workbench.
+
+    TYPES :
+      BEGIN OF ts_wa_object_customizing,
+        t_tabname_to_compare TYPE esh_t_om_tabname,
+        t_tabname_origin     TYPE esh_t_om_tabname,
+        t_tabname_target     TYPE esh_t_om_tabname,
+      END OF   ts_wa_object_customizing.
+
+    TYPES :
+      BEGIN OF ts_work_area_object,
+        workbench   TYPE lcl_main=&gt;ts_wa_object_workbench,
+        customizing TYPE lcl_main=&gt;ts_wa_object_customizing,
+      END OF   ts_work_area_object.
+
+    TYPES :
+      BEGIN OF ts_compare_customizing_com,
+        display_icon               TYPE icon_d,
+        tabname                    TYPE dd02l-tabname,
+        lines_count_origin         TYPE sy-tabix,
+        lines_count_target         TYPE sy-tabix,
+        no_content_difference      TYPE xsdboolean,
+        no_content_difference_icon TYPE icon_d,
+        exist_in_origin            TYPE xsdboolean,
+        exist_in_origin_icon       TYPE icon_d,
+        exist_in_target            TYPE xsdboolean,
+        exist_in_target_icon       TYPE icon_d,
+        identical_structure        TYPE xsdboolean,
+        identical_structure_icon   TYPE icon_d,
+        no_common_fields           TYPE xsdboolean,
+        no_common_fields_icon      TYPE icon_d,
+        compare_error              TYPE xsdboolean,
+        compare_error_icon         TYPE icon_d,
+        message                    TYPE bapiret2-message,
+      END OF   ts_compare_customizing_com.
+
+    TYPES : tt_compare_customizing_com TYPE STANDARD TABLE OF ts_compare_customizing_com
+                    WITH NON-UNIQUE KEY primary_key COMPONENTS tabname.
+
+    TYPES :
+      BEGIN OF ts_compare_workbench_result,
+        id_result            TYPE sysuuid_c32,
+        icon                 TYPE icon_d,
+        object               TYPE tadir-object,
+        obj_name             TYPE tadir-obj_name,
+        exist_in_origin      TYPE xsdboolean,
+        exist_in_origin_icon TYPE icon_d,
+        exist_in_target      TYPE xsdboolean,
+        exist_in_target_icon TYPE icon_d,
+        fragment             TYPE vrs_compare_item-fragment,
+        fragname             TYPE vrs_compare_item-fragname,
+        package_origin       TYPE vrs_compare_item-devclass_a,
+        package_target       TYPE vrs_compare_item-devclass_b,
+        equal                TYPE vrs_compare_item-equal,
+        equal_icon           TYPE icon_d,
+        nonversionable       TYPE vrs_compare_item-nonversionable,
+        nonversionable_icon  TYPE icon_d,
+        not_readable         TYPE vrs_compare_item-not_readable,
+        not_readable_icon    TYPE icon_d,
+        not_comparable       TYPE vrs_compare_item-not_comparable,
+        not_comparable_icon  TYPE icon_d,
+        uname                TYPE sy-uname,
+        timestamp            TYPE timestamp,
+      END OF   ts_compare_workbench_result.
+
+    TYPES : tt_compare_workbench_result TYPE STANDARD TABLE OF ts_compare_workbench_result
+                    WITH NON-UNIQUE KEY primary_key COMPONENTS object obj_name fragment fragname.
+
+    TYPES :
+      BEGIN OF ts_component_descr,
+        fieldname TYPE dd03vt-fieldname,
+        scrtext_s TYPE dd03vt-scrtext_s,
+        scrtext_m TYPE dd03vt-scrtext_m,
+        scrtext_l TYPE dd03vt-scrtext_l,
+      END OF   ts_component_descr.
+
+    TYPES : tt_component_descr TYPE SORTED TABLE OF ts_component_descr
+                    WITH NON-UNIQUE KEY primary_key COMPONENTS fieldname.
+    TYPES :
+      BEGIN OF ts_compare_customizing_result.
+            INCLUDE TYPE : lcl_main=&gt;ts_compare_customizing_com.
+    TYPES :
+      ot_content_origin  TYPE REF TO data,
+      ot_content_target  TYPE REF TO data,
+      t_component_origin TYPE cl_abap_structdescr=&gt;component_table,
+      t_component_target TYPE cl_abap_structdescr=&gt;component_table,
+      t_component_descr  TYPE lcl_main=&gt;tt_component_descr,
+      END OF   ts_compare_customizing_result.
+
+    TYPES : tt_compare_customizing_result TYPE SORTED TABLE OF ts_compare_customizing_result
+                    WITH NON-UNIQUE KEY primary_key COMPONENTS tabname.
+
+    TYPES :
+      BEGIN OF ts_compare_customizing_de_tab,
+        o_salv          TYPE REF TO cl_salv_table,
+        o_container     TYPE REF TO cl_gui_container,
+        o_event_handler TYPE REF TO lcl_customizing_handle_events,
+        current_tabname TYPE string,
+        ot_display_data TYPE REF TO data,
+      END OF   ts_compare_customizing_de_tab.
+
+    TYPES :
+      BEGIN OF ts_screen_3000_properties,
+        btn_previous_active TYPE xsdboolean,
+        btn_next_active     TYPE xsdboolean,
+      END OF   ts_screen_3000_properties.
+
+    TYPES :
+      BEGIN OF ts_wa_compare_customizing,
+        t_compare_result               TYPE lcl_main=&gt;tt_compare_customizing_result,
+        screen_properties              TYPE lcl_main=&gt;ts_screen_3000_properties BOXED,
+        display_element_table_list     TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
+        display_element_content_origin TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
+        display_element_content_target TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
+      END OF   ts_wa_compare_customizing.
+
+    TYPES :
+      BEGIN OF ts_compare_wokbench_de_tab,
+        o_salv          TYPE REF TO cl_salv_table,
+        o_container     TYPE REF TO cl_gui_container,
+        o_event_handler TYPE REF TO lcl_customizing_handle_events,
+        t_display_data  TYPE lcl_main=&gt;tt_compare_workbench_result,
+      END OF   ts_compare_wokbench_de_tab.
+
+    TYPES :
+      BEGIN OF ts_wa_compare_workbench,
+        t_compare_items TYPE vrs_compare_item_tab,
+        s_rfcsi_origin  TYPE rfcsi,
+        s_rfcsi_target  TYPE rfcsi,
+        t_nonvers       TYPE scwb_t_e071,
+        display_element TYPE lcl_main=&gt;ts_compare_wokbench_de_tab,
+      END OF   ts_wa_compare_workbench.
+
+    TYPES :
+      BEGIN OF ts_work_area_compare,
+        system      TYPE lcl_main=&gt;ts_compare_title_box BOXED,
+        workbench   TYPE lcl_main=&gt;ts_wa_compare_workbench BOXED,
+        customizing TYPE lcl_main=&gt;ts_wa_compare_customizing BOXED,
+      END OF   ts_work_area_compare.
+
+    TYPES :
+      BEGIN OF ts_work_area_private,
+        object  TYPE lcl_main=&gt;ts_work_area_object,
+        compare TYPE lcl_main=&gt;ts_work_area_compare,
+      END OF   ts_work_area_private.
+
+***------------------------------------------------------------------***
+**                           MÉTHODES                                 **
+***------------------------------------------------------------------***
+
+*	Déclaration de méthodes
+
+    &quot; Progression
+    CLASS-METHODS progress_display
+      IMPORTING
+        !iv_text       TYPE clike OPTIONAL
+        !iv_msgid      TYPE sy-msgid OPTIONAL
+        !iv_msgno      TYPE sy-msgno OPTIONAL
+        !iv_msgv1      TYPE sy-msgv1 OPTIONAL
+        !iv_msgv2      TYPE sy-msgv2 OPTIONAL
+        !iv_msgv3      TYPE sy-msgv3 OPTIONAL
+        !iv_msgv4      TYPE sy-msgv4 OPTIONAL
+        !iv_percentage TYPE i.
+
+    &quot; Range To Where
+    CLASS-METHODS range_2_where
+      IMPORTING
+        !ir_selopt_t        TYPE ANY TABLE
+        !iv_tablename       TYPE clike OPTIONAL
+        !iv_fieldname       TYPE clike
+      RETURNING
+        VALUE(rv_sql_where) TYPE string.
+
+    &quot; Affiche élément DDIC
+    CLASS-METHODS _display_ddic_element
+      IMPORTING
+        !iv_obj_name TYPE clike
+        !iv_obj_type TYPE clike.
+
+    &quot; Constructeur
+    METHODS constructor.
+
+    &quot; Contrôle saisi
+    METHODS _check_input
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Contrôle système
+    METHODS _check_system
+      IMPORTING
+                !iv_rfcdest     TYPE rfcdest
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Récupération des données
+    METHODS _object_get
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Récupération Objet Workbench
+    METHODS _object_workbench_get
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Récupération Objet - Custo
+    METHODS _object_customizing_get
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Récupération des objets des Packages
+    METHODS _object_package_get
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison des objets
+    METHODS _compare_object
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison des Ojets - Workbench
+    METHODS _compare_object_workbench
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison des Ojets - Customizing
+    METHODS _compare_object_customizing
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison des Tables - Customizing
+    METHODS _customizing_compare_table
+      IMPORTING
+                !it_tabname_to_compare TYPE esh_t_om_tabname
+                !iv_rowcount           TYPE sy-tabix OPTIONAL
+      RETURNING VALUE(rv_subrc)        TYPE sy-subrc.
+
+    &quot; Comparaison - Affichage
+    METHODS _compare_display
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison - Workbench - Affichage
+    METHODS _compare_display_workbench
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Workbench - Résultat - Sauvegarde
+    METHODS _workbench_result_save
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Comparaison - Customizing - Affichage
+    METHODS _compare_display_customizing
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Initilisation Contenu Table - Customizing
+    METHODS _custo_compare_content_table
+      IMPORTING
+        !iv_tablename     TYPE clike
+        !it_data_origin   TYPE esh_t_co_rfcrt_data
+        !it_data_target   TYPE esh_t_co_rfcrt_data
+        !it_fields_origin TYPE esh_t_co_rfcrt_fields
+        !it_fields_target TYPE esh_t_co_rfcrt_fields.
+
+    &quot; Constitution structure des tables - Comparaison
+    METHODS _custo_compare_prepare_struct
+      IMPORTING
+        !it_fields_to_use       TYPE esh_t_co_rfcrt_fields
+        !it_fields_to_compare   TYPE esh_t_co_rfcrt_fields OPTIONAL
+        !iv_identical_structure TYPE xsdboolean OPTIONAL
+      EXPORTING
+        !et_component           TYPE cl_abap_structdescr=&gt;component_table
+      CHANGING
+        !ct_component_descr     TYPE lcl_main=&gt;tt_component_descr.
+
+    &quot; Création table dynamic
+    METHODS _custo_compare_generate_table
+      IMPORTING
+                !it_component                 TYPE cl_abap_structdescr=&gt;component_table
+      EXPORTING
+                !eot_table                    TYPE REF TO data
+      RETURNING VALUE(rv_data_creation_error) TYPE xsdboolean.
+
+    &quot; Move-corresponding Table
+    METHODS _custo_comp_content_table_set
+      IMPORTING
+        !it_fields        TYPE esh_t_co_rfcrt_fields
+        !it_component     TYPE cl_abap_structdescr=&gt;component_table
+        !it_table_content TYPE STANDARD TABLE
+      EXPORTING
+        !et_data_export   TYPE STANDARD TABLE.
+
+    &quot; Customizing - Lecture de plus de données
+    METHODS _custo_comp_content_read_more
+      IMPORTING
+                !iv_tabname     TYPE clike
+                !iv_rowskip     TYPE sy-tabix OPTIONAL
+                !iv_rowcount    TYPE sy-tabix
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Customizing - Initialisation affichage résultat comparaison
+    METHODS _compare_display_feed_compare
+      IMPORTING
+                !iv_tabname     TYPE clike
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+    &quot; Customizing - Initialisation données d&apos;affichage
+    METHODS _custo_display_fill_content
+      IMPORTING
+        !it_content_to_use     TYPE STANDARD TABLE
+        !it_content_to_compare TYPE STANDARD TABLE OPTIONAL
+      EXPORTING
+        !et_display_data       TYPE STANDARD TABLE.
+
+    &quot; Customizing - Initialisation ALV
+    METHODS _custo_display_comp_alv_set
+      IMPORTING
+                !iv_origin          TYPE xsdboolean
+                !it_component       TYPE cl_abap_structdescr=&gt;component_table
+                !it_component_descr TYPE lcl_main=&gt;tt_component_descr
+      RETURNING VALUE(rv_subrc)     TYPE sy-subrc.
+
+    &quot; Récupération nombre de lignes
+    METHODS _rfc_table_lines_count
+      IMPORTING
+                !iv_tabname           TYPE dd02l-tabname
+                !iv_destination       TYPE rfcdest
+      EXPORTING
+                !ev_subrc             TYPE sy-subrc
+      RETURNING VALUE(rv_lines_count) TYPE sy-index.
+
+    &quot; Sélection à distance
+    METHODS _rfc_read_table
+      IMPORTING
+                !iv_rowcount    TYPE soid-accnt OPTIONAL
+                !iv_rowskip     TYPE soid-accnt OPTIONAL
+                !iv_destination TYPE rfcdest
+                !iv_query_table TYPE dd02l-tabname
+                !it_fields      TYPE esh_t_co_rfcrt_fields OPTIONAL
+                !it_options     TYPE esh_t_co_rfcrt_options OPTIONAL
+      EXPORTING
+                !et_data        TYPE STANDARD TABLE
+                !et_fields      TYPE esh_t_co_rfcrt_fields
+      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+
+***------------------------------------------------------------------***
+**                            ATTRIBUTS                               **
+***------------------------------------------------------------------***
+
+*	Déclaration d&apos;attributs
+
+    DATA : ms_work_area_private TYPE lcl_main=&gt;ts_work_area_private.
+    DATA : ms_selection_criteria TYPE lcl_main=&gt;ts_selection_criteria.
+
+ENDCLASS.             &quot;lcl_main DEFINITION
+
+*---------------------------------------------------------------------*
+*       CLASS lcl_customizing_handle_events DEFINITION
+*---------------------------------------------------------------------*
+*
+*---------------------------------------------------------------------*
+CLASS lcl_customizing_handle_events DEFINITION.
+
+*-- Publique
+  PUBLIC SECTION.
+
+***------------------------------------------------------------------***
+**                              TYPES                                 **
+***------------------------------------------------------------------***
+
+*   Déclaration de type
+
+***------------------------------------------------------------------***
+**                           MÉTHODES                                 **
+***------------------------------------------------------------------***
+
+*	Déclaration de méthodes
+
+    &quot; Constructeur
+    METHODS constructor
+      IMPORTING
+        !io_main       TYPE REF TO lcl_main
+        !iv_salv_id    TYPE clike
+        !io_salv_table TYPE REF TO cl_salv_table.
+
+    &quot; Handler - Lien
+    METHODS on_link_click FOR EVENT link_click OF cl_salv_events_table
+      IMPORTING !row !column.
+
+    &quot; Handler - Double clique
+    METHODS on_double_click FOR EVENT double_click OF cl_salv_events_table
+      IMPORTING !row !column.
+
+***------------------------------------------------------------------***
+**                            ATTRIBUTS                               **
+***------------------------------------------------------------------***
+
+*	Déclaration d&apos;attributs
+
+*-- Privée
+  PRIVATE SECTION.
+
+    &quot; Handler - Lien - Custo Liste de table
+    METHODS _on_link_click_custo_tl
+      IMPORTING !iv_row    TYPE salv_de_row
+                !iv_column TYPE salv_de_column.
+
+    &quot; Handler - Double-Clique - Custo Liste de table
+    METHODS _on_double_click_custo_tl
+      IMPORTING !iv_row    TYPE salv_de_row
+                !iv_column TYPE salv_de_column.
+
+***------------------------------------------------------------------***
+**                              TYPES                                 **
+***------------------------------------------------------------------***
+
+*   Déclaration de type
+
+    DATA : mv_salv_id TYPE string.
+    DATA : mo_main TYPE REF TO lcl_main.
+    DATA : mo_salv_table TYPE REF TO cl_salv_table.
+
+ENDCLASS.                    &quot;lcl_customizing_handle_events DEFINITION</source>
  </PROG>
  <PROG NAME="Z_A_BC_COMPARE_OBJECT_C02" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
   <textPool>
@@ -243,11 +665,37 @@ CLASS lcl_main IMPLEMENTATION.
 
           ENDIF.
 
-          IF ls_screen-name = &apos;P_T_ALL&apos;. ##NOTEXT
-            &quot; Critère figée
-            ls_screen-input = 0.
+          &quot; Traitement spécifique à un élément
+          CASE ls_screen-name.
 
-          ENDIF.
+            WHEN &apos;P_T_ALL&apos;. ##NOTEXT
+              &quot; Critère figée
+              ls_screen-input = 0.
+
+            WHEN &apos;P_CROWC&apos;.                                 &quot;#EC NOTEXT
+              &quot; Lecture Partionnée (REad More)
+              IF me-&gt;ms_selection_criteria-customizing-ov_partial_read-&gt;* EQ abap_false.
+                &quot; Lecture partiel désactivée
+                &quot;&quot;  --&gt; Empêche la saisie
+                ls_screen-input = 0.
+                CLEAR : me-&gt;ms_selection_criteria-customizing-ov_rowcount-&gt;*.
+
+              ELSE.
+                &quot;&quot;  --&gt; Autorise la saisie
+                ls_screen-input = 1.
+                IF me-&gt;ms_selection_criteria-customizing-ov_rowcount-&gt;* IS INITIAL.
+                  &quot; Nombre de ligne vide
+                  &quot;&quot;  --&gt; Initialise nombre par défaut
+                  me-&gt;ms_selection_criteria-customizing-ov_rowcount-&gt;* = gc_rowcount.
+
+                ENDIF.
+
+              ENDIF.
+
+            WHEN OTHERS.
+              &quot;Autre
+
+          ENDCASE.
 
         WHEN &apos;WKB&apos;. ##NOTEXT
           &quot; Workbench
@@ -305,8 +753,10 @@ CLASS lcl_main IMPLEMENTATION.
     me-&gt;ms_selection_criteria-workbench-or_funcname = REF #( s_funcn[] ).
 
     &quot; Initialisation Critère de sélection - Customizing
-    me-&gt;ms_selection_criteria-customizing-ov_activ            = REF #( p_custo ).
-    me-&gt;ms_selection_criteria-customizing-or_tabname          = REF #( s_tabn[] ).
+    me-&gt;ms_selection_criteria-customizing-ov_activ        = REF #( p_custo ).
+    me-&gt;ms_selection_criteria-customizing-or_tabname      = REF #( s_tabn[] ).
+    me-&gt;ms_selection_criteria-customizing-ov_rowcount     = REF #( p_crowc ).
+    me-&gt;ms_selection_criteria-customizing-ov_partial_read = REF #( p_rpart ).
 
     &quot; Initialisation Critère de sélection - Option de Comparaison
     me-&gt;ms_selection_criteria-compare_option-ov_all_type                 = REF #( p_t_all ).
@@ -315,8 +765,18 @@ CLASS lcl_main IMPLEMENTATION.
     me-&gt;ms_selection_criteria-compare_option-ov_compare_identical_struct = REF #( p_siden ).
 
     &quot; Initialisation référence sur données globales
-    me-&gt;ms_work_area_private-compare-system-origin = REF #( gv_sytem_origin ).
-    me-&gt;ms_work_area_private-compare-system-target = REF #( gv_sytem_target ).
+    me-&gt;ms_work_area_private-compare-system-origin        = REF #( gv_sytem_origin ).
+    me-&gt;ms_work_area_private-compare-system-target        = REF #( gv_sytem_target ).
+    me-&gt;ms_work_area_private-compare-system-detail_origin = REF #( gv_custo_det_origin ).
+    me-&gt;ms_work_area_private-compare-system-detail_target = REF #( gv_custo_det_target ).
+    me-&gt;ms_work_area_private-compare-system-lines_to_read = REF #( gv_lines_to_read_input ).
+
+    &quot; -----------------------------------------------------------
+    &quot; Modification valeur par défaut
+    &quot; -----------------------------------------------------------
+
+    &quot; Système source = Système en cours
+    me-&gt;ms_selection_criteria-system-ov_origin-&gt;* = |{ sy-sysid }CLNT{ sy-mandt }|. &quot;#EC NOTEXT
 
   ENDMETHOD.
 
@@ -435,6 +895,10 @@ CLASS lcl_main IMPLEMENTATION.
         &quot;&quot;  --&gt; Arrêt du programme
         LEAVE PROGRAM.
 
+      WHEN lcl_main=&gt;mc_ucomm-workbench-save.
+        &quot; Sauvegarde
+        me-&gt;_workbench_result_save( ).
+
       WHEN OTHERS.
         &quot; Autres
 
@@ -500,6 +964,63 @@ CLASS lcl_main IMPLEMENTATION.
 
     ENDIF.
 
+    &quot; -----------------------------------------------------------
+    &quot; Modification affichage
+    &quot; -----------------------------------------------------------
+
+    &quot; Parcours les éléments de l&apos;écran
+    LOOP AT SCREEN INTO DATA(ls_screen).
+
+      &quot; Suivant le groupe
+      CASE ls_screen-group1.
+
+        WHEN &apos;REM&apos;. &quot;#EC NOTEXT                                       &quot;#EC NOTEXT &quot;
+          &quot; REad More
+          &quot;&quot;  --&gt; Affiche / Masque l&apos;option
+          IF me-&gt;ms_selection_criteria-customizing-ov_partial_read-&gt;* EQ abap_true.
+            &quot; Lecture partiel activée
+            &quot;&quot;  --&gt; Affiche les éléments
+            ls_screen-active    = 1.
+            ls_screen-invisible = 0.
+
+          ELSE.
+            &quot; Lecture partiel désactivée
+            &quot;&quot;  --&gt; Masque les éléments
+            ls_screen-active    = 0.
+            ls_screen-invisible = 1.
+
+          ENDIF.
+
+        WHEN &apos;BPR&apos;.                                         &quot;#EC NOTEXT
+          &quot; Groupe Bouton Précédent
+          &quot;&quot;  --&gt; Modification activation bouton précédent
+          ls_screen-active = SWITCH #(
+            me-&gt;ms_work_area_private-compare-customizing-screen_properties-btn_previous_active
+            WHEN abap_true THEN 1
+            ELSE 0
+          ).
+
+        WHEN &apos;BNE&apos;.                                         &quot;#EC NOTEXT
+          &quot; Groupe Bouton Suivant
+          &quot;&quot;  --&gt; Modification activation bouton suivant
+          ls_screen-active = SWITCH #(
+            me-&gt;ms_work_area_private-compare-customizing-screen_properties-btn_next_active
+            WHEN abap_true THEN 1
+            ELSE 0
+          ).
+
+        WHEN OTHERS.
+          &quot; Autre
+          &quot;&quot;  --&gt; Passe à l&apos;itération suivante
+          CONTINUE.
+
+      ENDCASE.
+
+      &quot; Modifie l&apos;affichage
+      MODIFY screen FROM ls_screen.
+
+    ENDLOOP.
+
   ENDMETHOD.
 
   METHOD user_command_3000.
@@ -544,53 +1065,76 @@ CLASS lcl_main IMPLEMENTATION.
         LEAVE PROGRAM.
 
       WHEN lcl_main=&gt;mc_ucomm-customizing-next
-        OR lcl_main=&gt;mc_ucomm-customizing-previous.
-        &quot; Entrée précédente // Suivante
+        OR lcl_main=&gt;mc_ucomm-customizing-previous
+        OR lcl_main=&gt;mc_ucomm-customizing-read_more.
+        &quot; Entrée précedente // Suivante // Lire plus de lignes
         &quot;&quot;  --&gt; Récupération Index actuellement sélectioné
         lo_selections = me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-o_salv-&gt;get_selections( ).
         READ TABLE lo_selections-&gt;get_selected_rows( ) INDEX 1 INTO DATA(ls_selected_rows).
-        IF NOT ls_selected_rows IS INITIAL.
-          &quot; Ligne sélectionnée
-          &quot;&quot;  --&gt; Initialisation pointeur sur liste
-          ASSIGN me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-ot_display_data-&gt;*
-              TO &lt;lfs_t_table_list&gt;.
-          IF sy-subrc EQ 0.
-            &quot; Vérifie présence de ligne Avant / Après
-            IF sy-ucomm EQ lcl_main=&gt;mc_ucomm-customizing-previous.
-              &quot; Entrée précédente
-              SUBTRACT 1 FROM ls_selected_rows.
+        IF ls_selected_rows IS INITIAL.
+          &quot; Aucune ligne sélectionnée
+          &quot;&quot;  --&gt; Arrêt du traitement
+          RETURN.
 
-            ELSE.
-              &quot; Entrée suivante
-              ADD 1 TO ls_selected_rows.
+        ENDIF.
 
-            ENDIF.
+        &quot;&quot;  --&gt; Initialisation pointeur sur liste
+        ASSIGN me-&gt;ms_work_area_private-compare-customizing-display_element_table_list-ot_display_data-&gt;*
+            TO &lt;lfs_t_table_list&gt;.
+        IF sy-subrc NE 0.
+          &quot; Erreur initialisation pointeur
+          &quot;&quot;  --&gt; Arrêt du traitement
+          RETURN.
 
-            &quot; Vérifie cohérence de la sélection
-            IF ls_selected_rows LT 0 OR ls_selected_rows GT lines( &lt;lfs_t_table_list&gt; ).
-              &quot; Index négatif ou dépassement taille table
-              &quot;&quot;  --&gt; Arrêt du traitement
-              RETURN.
+        ENDIF.
 
-            ENDIF.
+        &quot; Vérifie présence de ligne Avant / Après
+        IF sy-ucomm EQ lcl_main=&gt;mc_ucomm-customizing-previous.
+          &quot; Entrée précédente
+          SUBTRACT 1 FROM ls_selected_rows.
 
-            &quot; Récupération de l&apos;entrée correspondante
-            READ TABLE &lt;lfs_t_table_list&gt; INDEX ls_selected_rows
-             ASSIGNING FIELD-SYMBOL(&lt;lfs_s_table_list&gt;).
-            IF sy-subrc NE 0.
-              &quot; Erreur lors de la récupération de la table
-              &quot;&quot;  --&gt; Arrêt du traitement
-              RETURN.
+        ELSEIF sy-ucomm EQ lcl_main=&gt;mc_ucomm-customizing-next.
+          &quot; Entrée suivante
+          ADD 1 TO ls_selected_rows.
 
-            ELSE.
-              &quot; Correspondance trouvée
-              &quot;&quot;  --&gt; Stocke sa position
-              lv_tabix_tabname = sy-tabix.
+        ENDIF.
 
-            ENDIF.
+        &quot; Vérifie cohérence de la sélection
+        IF ls_selected_rows LT 0 OR ls_selected_rows GT lines( &lt;lfs_t_table_list&gt; ).
+          &quot; Index négatif ou dépassement taille table
+          &quot;&quot;  --&gt; Arrêt du traitement
+          RETURN.
 
-          ENDIF.
-          IF &lt;lfs_s_table_list&gt; IS ASSIGNED.
+        ENDIF.
+
+        &quot; Récupération de l&apos;entrée correspondante
+        READ TABLE &lt;lfs_t_table_list&gt; INDEX ls_selected_rows
+         ASSIGNING FIELD-SYMBOL(&lt;lfs_s_table_list&gt;).
+        IF sy-subrc NE 0.
+          &quot; Erreur lors de la récupération de la table
+          &quot;&quot;  --&gt; Arrêt du traitement
+          RETURN.
+
+        ELSE.
+          &quot; Correspondance trouvée
+          &quot;&quot;  --&gt; Stocke sa position
+          lv_tabix_tabname = sy-tabix.
+
+        ENDIF.
+
+        IF NOT &lt;lfs_s_table_list&gt; IS ASSIGNED.
+          &quot; Aucune correspondance trouvée
+          &quot;&quot;  --&gt; Arrêt du traitement
+          RETURN.
+
+        ENDIF.
+
+        &quot; Suivant l&apos;Action utilisateur
+        CASE sy-ucomm.
+
+          WHEN lcl_main=&gt;mc_ucomm-customizing-next
+            OR lcl_main=&gt;mc_ucomm-customizing-previous.
+            &quot; Entrée précédente // Suivante
             &quot; Ici on va forcer la sélection de la ligne
             &quot;&quot; Dans certain cas de navigation, sans la méthode &quot;REFRESH&quot;,
             &quot;&quot; deux lignes pouvaient être sélectionnées, ce qui n&apos;était pas ergonomique
@@ -606,14 +1150,82 @@ CLASS lcl_main IMPLEMENTATION.
             &quot;&quot;  --&gt; Modification des tables de résultats
             me-&gt;_compare_display_feed_compare( &lt;lfs_s_table_list&gt;-tabname ).
 
-          ENDIF.
+          WHEN lcl_main=&gt;mc_ucomm-customizing-read_more.
+            &quot; Lire plus
+            &quot;&quot;  --&gt; Lire plus de ligne
+            me-&gt;_custo_comp_content_read_more(
+              iv_tabname  = &lt;lfs_s_table_list&gt;-tabname
+              iv_rowcount = me-&gt;ms_work_area_private-compare-system-lines_to_read-&gt;*
+            ).
 
-        ENDIF.
+          WHEN OTHERS.
+            &quot; Autres
+
+        ENDCASE. &quot;Fin Case dépendance avec ligne sélectionée
 
       WHEN OTHERS.
         &quot; Autres
 
     ENDCASE.
+
+  ENDMETHOD.
+
+  METHOD ddic_transaction_display_table.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+    TRY.
+        &quot; -----------------------------------------------------------
+        &quot; Affiche la table en SE11
+        &quot; -----------------------------------------------------------
+
+        &quot; Affichage
+        lcl_main=&gt;_display_ddic_element(
+          iv_obj_name = me-&gt;ms_work_area_private-compare-customizing-t_compare_result[ iv_row ]-tabname
+          iv_obj_type = if_dd_constants=&gt;tabl
+        ).
+
+      CATCH cx_sy_itab_line_not_found.
+        &quot; Aucune correspondance
+        &quot;&quot;  --&gt; Arrêt du traitement
+        RETURN.
+
+    ENDTRY.
+
+  ENDMETHOD.
+
+  METHOD _display_ddic_element.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+    &quot; -----------------------------------------------------------
+    &quot; Affiche l&apos;élément DDIC
+    &quot; -----------------------------------------------------------
+
+    &quot; Affiche l&apos;objet du dictionnaire
+    cl_wb_ddic=&gt;access_ddic_via_manager(
+      EXPORTING
+        p_obj_name              = CONV #( iv_obj_name )
+        p_obj_type              = CONV #( iv_obj_type )
+        p_operation             = &apos;S&apos; &quot;Affichage
+      EXCEPTIONS
+        action_cancelled        = 1
+        object_not_found        = 2
+        operation_not_supported = 3
+        permission_failure      = 4
+        error_occured           = 5
+        OTHERS                  = 6
+    ).
+    IF sy-subrc NE 0.
+      &quot; Une erreur est survenue
+      &quot;&quot;  --&gt; Arrêt du traitement
+      RETURN.
+
+    ENDIF.
 
   ENDMETHOD.
 
@@ -698,7 +1310,7 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
 
     &quot; Simule une action pour déclencher le PBO
-    cl_gui_cfw=&gt;set_new_ok_code( lcl_main=&gt;mc_ucomm-common-dummy ).                 &quot;#EC NOTEXT
+    cl_gui_cfw=&gt;set_new_ok_code( lcl_main=&gt;mc_ucomm-common-dummy ). &quot;#EC NOTEXT
 
     &quot; Synchronisation Back &amp; Front
     cl_gui_cfw=&gt;flush(
@@ -752,10 +1364,15 @@ CLASS lcl_main IMPLEMENTATION.
     ENDIF.
 
     &quot; Initialisation variable d&apos;affichage
+    &quot;&quot;  --&gt; Texte système Origine
     me-&gt;ms_work_area_private-compare-system-origin-&gt;* =
       |{ text-tso } : { me-&gt;ms_selection_criteria-system-ov_origin-&gt;* }|.
+    &quot;&quot;  --&gt; Texte système Cible
     me-&gt;ms_work_area_private-compare-system-target-&gt;* =
       |{ text-tst } : { me-&gt;ms_selection_criteria-system-ov_target-&gt;* }|.
+    &quot;&quot;  --&gt; Nombre de lignes à lire
+    me-&gt;ms_work_area_private-compare-system-lines_to_read-&gt;* =
+      me-&gt;ms_selection_criteria-customizing-ov_rowcount-&gt;*.
 
   ENDMETHOD.
 
@@ -976,6 +1593,12 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; Sélection des Tables dans les différents systèmes
     &quot; -----------------------------------------------------------
 
+    &quot; Progression début Recherche système origine
+    lcl_main=&gt;progress_display(
+      iv_text       = text-rso
+      iv_percentage = 50
+    ).
+
     &quot; Récupération table dans système d&apos;origine
     me-&gt;_rfc_read_table(
       EXPORTING
@@ -985,6 +1608,12 @@ CLASS lcl_main IMPLEMENTATION.
         iv_destination = me-&gt;ms_selection_criteria-system-ov_origin-&gt;*
       IMPORTING
         et_data        = me-&gt;ms_work_area_private-object-customizing-t_tabname_origin
+    ).
+
+    &quot; Progression début Recherche système cible
+    lcl_main=&gt;progress_display(
+      iv_text       = text-rst
+      iv_percentage = 100
     ).
 
     &quot; Récupération table dans système cible
@@ -1066,19 +1695,24 @@ CLASS lcl_main IMPLEMENTATION.
 
       ENDIF.
 
-      IF  ( ls_compare_result-exist_in_target EQ abap_true
-      AND   ls_compare_result-exist_in_origin EQ abap_true )
-       OR me-&gt;ms_selection_criteria-compare_option-ov_only_object_commun-&gt;* EQ abap_false.
-        &quot; Table existante dans les deux systèmes
-        &quot;&quot;  --&gt; Ajout dans table de comparaison
-        READ TABLE me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare
-          WITH KEY table_line = &lt;lfs_s_tabname_origin&gt; TRANSPORTING NO FIELDS BINARY SEARCH.
-        IF sy-subrc NE 0.
-          INSERT &lt;lfs_s_tabname_origin&gt;
-            INTO me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare
-           INDEX sy-tabix.
+      IF me-&gt;ms_selection_criteria-compare_option-ov_only_object_commun-&gt;* EQ abap_true.
+        &quot; Conserve uniquement les objets en commun
+        IF ls_compare_result-exist_in_target EQ abap_false
+        OR ls_compare_result-exist_in_origin EQ abap_false.
+          &quot;&quot;  --&gt; Passe à l&apos;itération suivante
+          CONTINUE.
 
         ENDIF.
+
+      ENDIF.
+
+      &quot; Ajout dans table de comparaison
+      READ TABLE me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare
+        WITH KEY table_line = &lt;lfs_s_tabname_origin&gt; TRANSPORTING NO FIELDS BINARY SEARCH.
+      IF sy-subrc NE 0.
+        INSERT &lt;lfs_s_tabname_origin&gt;
+          INTO me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare
+         INDEX sy-tabix.
 
       ENDIF.
 
@@ -1123,11 +1757,79 @@ CLASS lcl_main IMPLEMENTATION.
 
   ENDMETHOD.
 
+  METHOD _rfc_table_lines_count.
+
+***------------------------------------------------------------------***
+**                             TABLES                                 **
+***------------------------------------------------------------------***
+    DATA :
+      lt_entries TYPE esh_t_co_rfcrt_data.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+    CLEAR : ev_subrc.
+
+    &quot; -----------------------------------------------------------
+    &quot; Contrôle
+    &quot; -----------------------------------------------------------
+
+    IF iv_tabname IS INITIAL.
+      &quot; Nom table non renseigné
+      &quot;&quot;  --&gt; Arrêt du traitement
+      RETURN.
+
+    ENDIF.
+
+    &quot; -----------------------------------------------------------
+    &quot; Récupération nombre de lignes
+    &quot; -----------------------------------------------------------
+
+    &quot; Récupération du nombre de lignes
+    CALL FUNCTION &apos;RFC_GET_TABLE_ENTRIES&apos;
+      DESTINATION iv_destination
+      EXPORTING
+        max_entries       = 1
+        table_name        = iv_tabname
+      IMPORTING
+        number_of_entries = rv_lines_count
+      TABLES
+        entries           = lt_entries
+      EXCEPTIONS
+        internal_error    = 1
+        table_empty       = 2
+        table_not_found   = 3
+        error_message     = 4
+        OTHERS            = 5.
+    IF sy-subrc NE 0.
+      &quot; Une erreur est survenue
+      &quot;&quot;  --&gt; Retourne Code d&apos;erreur
+      ev_subrc = 4.
+      RETURN.
+
+    ENDIF.
+
+  ENDMETHOD.
+
   METHOD _rfc_read_table.
 
 ***==================================================================***
 **                           TRAITEMENT                               **
 ***==================================================================***
+
+    REFRESH : et_fields.
+
+    &quot; -----------------------------------------------------------
+    &quot; Contrôle
+    &quot; -----------------------------------------------------------
+
+    IF iv_query_table IS INITIAL.
+      &quot; Nom table non renseigné
+      &quot;&quot;  --&gt; Arrêt du traitement
+      RETURN.
+
+    ENDIF.
 
     &quot; -----------------------------------------------------------
     &quot; Initialisation
@@ -1146,6 +1848,8 @@ CLASS lcl_main IMPLEMENTATION.
       EXPORTING
         query_table          = iv_query_table
 *       DELIMITER            = &apos; &apos;
+        rowskip              = iv_rowskip
+        rowcount             = iv_rowcount
       TABLES
         options              = it_options
         fields               = et_fields
@@ -1196,24 +1900,20 @@ CLASS lcl_main IMPLEMENTATION.
         EXPORTING
           dest1                      = me-&gt;ms_selection_criteria-system-ov_origin-&gt;*
           dest2                      = me-&gt;ms_selection_criteria-system-ov_target-&gt;*
-*         CUST_MODI_FLAG             = &apos;  &apos;
-          cust_flag                  = &apos;B&apos;
-          modi_flag                  = &apos;C&apos;
-          sap_flag                   = &apos;D&apos;
+          cust_flag                  = abap_false &quot;Objet modifié / crée
+          modi_flag                  = abap_false &quot;Objet SAP modifié
+          &quot; Recherche par Package
           paket_flag                 = abap_true
           paket_name                 = &lt;lfs_s_devclass&gt;
           subpaket_flag              = abap_true
-          req_flag                   = &apos;F&apos;
-*         REQ_NAME                   = &apos;  &apos;
-          obj_flag                   = &apos;H&apos;
-          soft_flag                  = &apos;L&apos;
-          namespace_flag             = &apos;I&apos;
-*         NAME_SPACE                 = &apos; &apos;
-          auth_flag                  = &apos;J&apos;
-*         NAME_AUTH                  = &apos; &apos;
-          appl_flag                  = &apos;K&apos;
-*         NAME_APPL                  = &apos; &apos;
-*         NAME_SOFT                  = &apos; &apos;
+          &quot; Recherche par OT
+          req_flag                   = abap_false
+          req_name                   = space
+          &quot; Recherche par Objet (alimenté LT_IMP_E071)
+          obj_flag                   = abap_false
+          &quot; Recherche par Autorisation
+          auth_flag                  = abap_false
+          name_auth                  = space
         TABLES
           et_only1                   = lt_only_origin_temp
           et_only2                   = lt_only_target_temp
@@ -1235,7 +1935,6 @@ CLASS lcl_main IMPLEMENTATION.
         &quot;&quot;  --&gt; Ajout des données
         APPEND LINES OF :
           lt_both_temp     TO me-&gt;ms_work_area_private-object-workbench-t_object_to_compare,
-          lt_imp_e071_temp TO me-&gt;ms_work_area_private-object-workbench-t_imp_e071,
           lt_only_origin_temp TO me-&gt;ms_work_area_private-object-workbench-t_only_origin,
           lt_only_target_temp TO me-&gt;ms_work_area_private-object-workbench-t_only_target.
 
@@ -1368,6 +2067,24 @@ CLASS lcl_main IMPLEMENTATION.
 
   METHOD _compare_object_customizing.
 
+***==================================================================***
+**                             TRAITEMENT                             **
+***==================================================================***
+
+    &quot; -----------------------------------------------------------
+    &quot; Comparaison des tables
+    &quot; -----------------------------------------------------------
+
+    &quot; Comparaison des tables
+    rv_subrc = me-&gt;_customizing_compare_table(
+      iv_rowcount           = me-&gt;ms_selection_criteria-customizing-ov_rowcount-&gt;*
+      it_tabname_to_compare = me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare[]
+    ).
+
+  ENDMETHOD.
+
+  METHOD _customizing_compare_table.
+
 ***------------------------------------------------------------------***
 **                             TABLES                                 **
 ***------------------------------------------------------------------***
@@ -1377,6 +2094,15 @@ CLASS lcl_main IMPLEMENTATION.
       lt_fields_origin TYPE esh_t_co_rfcrt_fields,
       lt_fields_target TYPE esh_t_co_rfcrt_fields.
 
+***------------------------------------------------------------------***
+**                            VARIABLES                               **
+***------------------------------------------------------------------***
+    DATA :
+      lv_text       TYPE string,
+      lv_lines      TYPE string,
+      lv_integer    TYPE int4,
+      lv_percentage TYPE string.
+
 ***==================================================================***
 **                           TRAITEMENT                               **
 ***==================================================================***
@@ -1385,19 +2111,43 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; Contrôle
     &quot; -----------------------------------------------------------
 
-    IF me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare[] IS INITIAL.
+    IF it_tabname_to_compare[] IS INITIAL.
       &quot; Aucune données à comparer
       rv_subrc = 1.
       RETURN.
 
     ENDIF.
 
+    &quot; Initialisation nombre d&apos;enregistrement
+    lv_lines = lv_integer = |{ lines( it_tabname_to_compare ) ZERO = NO }|.
+
     &quot; -----------------------------------------------------------
     &quot; Récupération des tables dans les différents système
     &quot; -----------------------------------------------------------
 
-    LOOP AT me-&gt;ms_work_area_private-object-customizing-t_tabname_to_compare
+    LOOP AT it_tabname_to_compare
       ASSIGNING FIELD-SYMBOL(&lt;lfs_s_tabname_to_compare&gt;).
+
+      CLEAR : lv_percentage, lv_text.
+
+      &quot; Initialisation texte et progression
+      lv_text = text-pct.
+      &quot;&quot;  --&gt; Itération
+      lv_percentage = lv_integer = |{ sy-tabix ZERO = NO }|.
+      REPLACE &apos;&amp;1&apos; WITH lv_percentage INTO lv_text.         &quot;#EC NOTEXT
+      &quot;&quot;  --&gt; Total
+      REPLACE &apos;&amp;2&apos; WITH lv_lines INTO lv_text.              &quot;#EC NOTEXT
+      &quot;&quot;  --&gt; Nom table
+      REPLACE &apos;&amp;3&apos; WITH &lt;lfs_s_tabname_to_compare&gt; INTO lv_text. &quot;#EC NOTEXT
+
+      &quot;&quot;  --&gt; Progression
+      lv_percentage = |{ ( sy-tabix * 100 / lv_lines ) ZERO = NO }|.
+
+      &quot; Progression comparaison table
+      lcl_main=&gt;progress_display(
+        iv_text       = lv_text
+        iv_percentage = CONV #( lv_percentage )
+      ).
 
       &quot; Récupération de l&apos;entrée correspondance
       READ TABLE me-&gt;ms_work_area_private-compare-customizing-t_compare_result
@@ -1405,9 +2155,16 @@ CLASS lcl_main IMPLEMENTATION.
        ASSIGNING FIELD-SYMBOL(&lt;lfs_s_compare_result&gt;).
 
       IF &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true.
+        &quot; Récupération nombre de lignes - Origine
+        &lt;lfs_s_compare_result&gt;-lines_count_origin = me-&gt;_rfc_table_lines_count(
+          iv_tabname     = &lt;lfs_s_tabname_to_compare&gt;
+          iv_destination = me-&gt;ms_selection_criteria-system-ov_origin-&gt;*
+        ).
+
         &quot; Récupération données - Origine
         me-&gt;_rfc_read_table(
           EXPORTING
+            iv_rowcount    = iv_rowcount
             iv_query_table = &lt;lfs_s_tabname_to_compare&gt;
             iv_destination = me-&gt;ms_selection_criteria-system-ov_origin-&gt;*
           IMPORTING
@@ -1426,9 +2183,16 @@ CLASS lcl_main IMPLEMENTATION.
       ENDIF.
 
       IF &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true.
+        &quot; Récupération nombre de lignes - Cible
+        &lt;lfs_s_compare_result&gt;-lines_count_target = me-&gt;_rfc_table_lines_count(
+          iv_tabname     = &lt;lfs_s_tabname_to_compare&gt;
+          iv_destination = me-&gt;ms_selection_criteria-system-ov_target-&gt;*
+        ).
+
         &quot; Récupération données - Cible
         me-&gt;_rfc_read_table(
           EXPORTING
+            iv_rowcount    = iv_rowcount
             iv_query_table = &lt;lfs_s_tabname_to_compare&gt;
             iv_destination = me-&gt;ms_selection_criteria-system-ov_target-&gt;*
           IMPORTING
@@ -1511,6 +2275,8 @@ CLASS lcl_main IMPLEMENTATION.
 **                            VARIABLES                               **
 ***------------------------------------------------------------------***
     DATA :
+      lv_id_result       TYPE sysuuid_c32,
+      lv_timestamp       TYPE timestamp,
       lv_exist_in_origin TYPE xsdboolean,
       lv_exist_in_target TYPE xsdboolean.
 
@@ -1521,6 +2287,19 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
     &quot; Préparation données à afficher
     &quot; -----------------------------------------------------------
+
+    &quot; Timestamp
+    GET TIME STAMP FIELD lv_timestamp.
+
+    TRY.
+        lv_id_result = cl_system_uuid=&gt;create_uuid_c32_static( ).
+
+      CATCH cx_uuid_error.
+        &quot; Erreur
+        &quot;&quot; --&gt; Génération Nombre aléatoire
+        lv_id_result = cl_abap_random=&gt;seed( ).
+
+    ENDTRY.
 
     &quot; Tri pour Perf
     SORT me-&gt;ms_work_area_private-object-workbench-t_only_origin BY object obj_name.
@@ -1570,6 +2349,11 @@ CLASS lcl_main IMPLEMENTATION.
               package_origin = devclass_a
               package_target = devclass_b
           ).
+
+          &quot; Initialisation champs Log
+          ls_compare_result-uname     = sy-uname.
+          ls_compare_result-timestamp = lv_timestamp.
+          ls_compare_result-id_result = lv_id_result.
 
           &quot; Initialisation existe dans système d&apos;origine
           ls_compare_result-exist_in_origin      = lv_exist_in_origin.
@@ -1637,6 +2421,11 @@ CLASS lcl_main IMPLEMENTATION.
       ELSE.
         IF me-&gt;ms_selection_criteria-compare_option-ov_only_difference-&gt;* EQ abap_false.
           &quot; Aucune correspondance
+          &quot;&quot;  --&gt; Initialisation champs Log
+          ls_compare_result-uname     = sy-uname.
+          ls_compare_result-timestamp = lv_timestamp.
+          ls_compare_result-id_result = lv_id_result.
+
           &quot;&quot;  --&gt; Initialisation existe dans système d&apos;origine
           ls_compare_result-exist_in_origin      = lv_exist_in_origin.
           ls_compare_result-exist_in_origin_icon = SWITCH #( ls_compare_result-exist_in_origin
@@ -1658,6 +2447,19 @@ CLASS lcl_main IMPLEMENTATION.
       ENDIF.
 
     ENDLOOP.
+
+    &quot; -----------------------------------------------------------
+    &quot; Post-Traitement
+    &quot; -----------------------------------------------------------
+
+    &quot; Recherche présence d&apos;anomalie
+    IF line_exists( me-&gt;ms_work_area_private-compare-workbench-display_element-t_display_data[ icon = text-e00 ] ).
+      &quot; Anomalie présente
+      &quot;&quot;  --&gt; Tri par Statut
+      SORT me-&gt;ms_work_area_private-compare-workbench-display_element-t_display_data
+        BY icon DESCENDING object obj_name.
+
+    ENDIF.
 
     TRY.
         &quot; -----------------------------------------------------------
@@ -1703,6 +2505,36 @@ CLASS lcl_main IMPLEMENTATION.
         TRY.
             &quot; Modification FC
             DATA(lo_columns) = me-&gt;ms_work_area_private-compare-workbench-display_element-o_salv-&gt;get_columns( ).
+
+            TRY.
+                &quot; ID Résultat
+                lo_column = lo_columns-&gt;get_column( &apos;ID_RESULT&apos; ). &quot;#EC NOTEXT
+                lo_column-&gt;set_visible( abap_false ).
+                lo_column-&gt;set_technical( abap_true ).
+
+              CATCH cx_salv_not_found.
+
+            ENDTRY.
+
+            TRY.
+                &quot; Nom
+                lo_column = lo_columns-&gt;get_column( &apos;UNAME&apos; ). &quot;#EC NOTEXT
+                lo_column-&gt;set_visible( abap_false ).
+                lo_column-&gt;set_technical( abap_true ).
+
+              CATCH cx_salv_not_found.
+
+            ENDTRY.
+
+            TRY.
+                &quot; Timestamp
+                lo_column = lo_columns-&gt;get_column( &apos;TIMESTAMP&apos; ). &quot;#EC NOTEXT
+                lo_column-&gt;set_visible( abap_false ).
+                lo_column-&gt;set_technical( abap_true ).
+
+              CATCH cx_salv_not_found.
+
+            ENDTRY.
 
             TRY.
                 &quot; Nom Objet
@@ -1971,8 +2803,9 @@ CLASS lcl_main IMPLEMENTATION.
       &quot; Aucune différence de contenu - Initialisation Icône
       &lt;lfs_s_compare_result&gt;-no_content_difference_icon = SWITCH #(
         &lt;lfs_s_compare_result&gt;-no_content_difference
-          WHEN abap_false THEN text-e00
-          ELSE text-s00
+          WHEN abap_true      THEN text-s00
+          WHEN abap_false     THEN text-e00
+          WHEN abap_undefined THEN text-i00
       ).
 
       &quot; Icône affichage
@@ -1988,6 +2821,12 @@ CLASS lcl_main IMPLEMENTATION.
       &quot;&quot;  --&gt; Arrêt du traitement
       rv_subrc = 8.
       RETURN.
+
+    ENDIF.
+
+    IF lines( &lt;lfs_t_table_list&gt; ) GT 1.
+      &quot;&quot;  --&gt; Propriété affichage bouton précédent : Actif
+      me-&gt;ms_work_area_private-compare-customizing-screen_properties-btn_next_active = abap_true.
 
     ENDIF.
 
@@ -2045,7 +2884,7 @@ CLASS lcl_main IMPLEMENTATION.
           lo_columns = lo_de_table_list-&gt;o_salv-&gt;get_columns( ).
 
           TRY.
-              &quot;&quot;  --&gt; Modification colonne - Affichage
+              &quot;&quot;  --&gt; Icône
               lo_column_table ?= lo_columns-&gt;get_column( &apos;DISPLAY_ICON&apos; ). &quot;#EC NOTEXT
               lo_column_table-&gt;set_icon( if_salv_c_bool_sap=&gt;true ).
               lo_column_table-&gt;set_cell_type( if_salv_c_cell_type=&gt;hotspot ).
@@ -2053,6 +2892,41 @@ CLASS lcl_main IMPLEMENTATION.
             CATCH cx_root.                              &quot;#EC NO_HANDLER
               &quot; Erreur
               &quot;&quot;  --&gt; Tant pis ...
+
+          ENDTRY.
+
+          TRY.
+              &quot;&quot;  --&gt; Nom de table
+              lo_column_table ?= lo_columns-&gt;get_column( &apos;TABNAME&apos; ). &quot;#EC NOTEXT
+              lo_column_table-&gt;set_cell_type( if_salv_c_cell_type=&gt;link ).
+
+            CATCH cx_root.                              &quot;#EC NO_HANDLER
+              &quot; Erreur
+              &quot;&quot;  --&gt; Tant pis ...
+
+          ENDTRY.
+
+          TRY.
+              &quot; Origine - Nombre de lignes
+              lo_column = lo_columns-&gt;get_column( &apos;LINES_COUNT_ORIGIN&apos; ). &quot;#EC NOTEXT
+              lo_column-&gt;set_output_length( 15 ).
+              lo_column-&gt;set_long_text( CONV #( text-tlo ) ).
+              lo_column-&gt;set_short_text( CONV #( text-tlo ) ).
+              lo_column-&gt;set_medium_text( CONV #( text-tlo ) ).
+
+            CATCH cx_salv_not_found.
+
+          ENDTRY.
+
+          TRY.
+              &quot; Cible - Nombre de lignes
+              lo_column = lo_columns-&gt;get_column( &apos;LINES_COUNT_TARGET&apos; ). &quot;#EC NOTEXT
+              lo_column-&gt;set_output_length( 13 ).
+              lo_column-&gt;set_long_text( CONV #( text-tlt ) ).
+              lo_column-&gt;set_short_text( CONV #( text-tlt ) ).
+              lo_column-&gt;set_medium_text( CONV #( text-tlt ) ).
+
+            CATCH cx_salv_not_found.
 
           ENDTRY.
 
@@ -2304,16 +3178,6 @@ CLASS lcl_main IMPLEMENTATION.
           &quot; Dans le cas du rechargement de la table
           &quot;&quot;  --&gt; Libère les éléments du Container
           lo_display_element-&gt;o_container-&gt;free( ).
-*          cl_gui_cfw=&gt;flush(
-*            EXCEPTIONS
-*              cntl_error        = 1
-*              cntl_system_error = 2
-*          ).
-*          IF sy-subrc NE 0.
-*            &quot; Erreur refresh
-*            &quot;&quot;  --&gt; Tant pis ...
-*
-*          ENDIF.
 
         ENDIF.
 
@@ -2421,6 +3285,53 @@ CLASS lcl_main IMPLEMENTATION.
 
   ENDMETHOD.
 
+  METHOD _custo_comp_content_read_more.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+    &quot; -----------------------------------------------------------
+    &quot; Charge les données supplémentaires
+    &quot; -----------------------------------------------------------
+
+    &quot; Récupére les lignes supplémentaires et comparent
+    me-&gt;_customizing_compare_table(
+      iv_rowcount           = iv_rowcount
+      it_tabname_to_compare = VALUE #(
+          ( iv_tabname )
+      )
+    ).
+
+    &quot; -----------------------------------------------------------
+    &quot; Modifie le contenu des tables
+    &quot; -----------------------------------------------------------
+
+    &quot; Modifie le contenu des tables
+    me-&gt;_compare_display_feed_compare( iv_tabname ).
+
+    &quot; -----------------------------------------------------------
+    &quot; Traitement supplémentaire
+    &quot; -----------------------------------------------------------
+
+    &quot; Simule une action pour déclencher le PBO
+    cl_gui_cfw=&gt;set_new_ok_code( lcl_main=&gt;mc_ucomm-common-dummy ). &quot;#EC NOTEXT
+
+    &quot; Synchronisation Back &amp; Front
+    cl_gui_cfw=&gt;flush(
+      EXCEPTIONS
+        cntl_error = 1
+        cntl_system_error = 2
+    ).
+    IF sy-subrc NE 0.
+      &quot; Erreur
+      &quot;&quot;  --&gt; Tant pis
+      CLEAR : sy-subrc.
+
+    ENDIF.
+
+  ENDMETHOD.
+
   METHOD _compare_display_feed_compare.
 
 ***------------------------------------------------------------------***
@@ -2491,6 +3402,16 @@ CLASS lcl_main IMPLEMENTATION.
       RETURN.
 
     ENDIF.
+
+    &quot; Propriété affichage bouton suivant
+    me-&gt;ms_work_area_private-compare-customizing-screen_properties-btn_next_active = xsdbool(
+      sy-tabix LT lines( me-&gt;ms_work_area_private-compare-customizing-t_compare_result )
+    ).
+
+    &quot; Propriété affichage bouton précédent
+    me-&gt;ms_work_area_private-compare-customizing-screen_properties-btn_previous_active = xsdbool(
+      sy-tabix GT 1
+    ).
 
     &quot; Initialisation composant
     lt_component_descr[]  = &lt;lfs_s_compare_result&gt;-t_component_descr[].
@@ -2569,7 +3490,9 @@ CLASS lcl_main IMPLEMENTATION.
     &quot; -----------------------------------------------------------
 
     &quot; Alimentation table Cible
-    IF  &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
+    IF  &lt;lfs_t_content_target&gt; IS ASSIGNED
+    AND &lt;lfs_t_content_origin&gt; IS ASSIGNED
+    AND &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
     AND &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true.
       &quot; Utilise aussi la table de contenu d&apos;Origine
       me-&gt;_custo_display_fill_content(
@@ -2580,7 +3503,8 @@ CLASS lcl_main IMPLEMENTATION.
           et_display_data       = &lt;lfs_t_display_target&gt;
       ).
 
-    ELSEIF &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true.
+    ELSEIF &lt;lfs_t_content_target&gt; IS ASSIGNED
+       AND &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true.
       &quot; Sans utiliser la table de contenu d&apos;Origine
       me-&gt;_custo_display_fill_content(
         EXPORTING
@@ -2592,7 +3516,9 @@ CLASS lcl_main IMPLEMENTATION.
     ENDIF.
 
     &quot; Alimentation table Origine
-    IF  &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
+    IF  &lt;lfs_t_content_origin&gt; IS ASSIGNED
+    AND &lt;lfs_t_content_target&gt; IS ASSIGNED
+    AND &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
     AND &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true.
       &quot; Utilise aussi la table de contenu Cible
       me-&gt;_custo_display_fill_content(
@@ -2603,7 +3529,8 @@ CLASS lcl_main IMPLEMENTATION.
           et_display_data       = &lt;lfs_t_display_origin&gt;
       ).
 
-    ELSEIF &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true.
+    ELSEIF &lt;lfs_t_content_origin&gt; IS ASSIGNED
+       AND &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true.
       &quot; Sans utiliser la table de contenu Cible
       me-&gt;_custo_display_fill_content(
         EXPORTING
@@ -2638,6 +3565,28 @@ CLASS lcl_main IMPLEMENTATION.
       &quot; Erreur
       &quot;&quot;  --&gt; Arrêt du traitement
       RETURN.
+
+    ENDIF.
+
+    &quot; -----------------------------------------------------------
+    &quot; Changement texte détail
+    &quot; -----------------------------------------------------------
+
+    &quot; Origine - Détail
+    me-&gt;ms_work_area_private-compare-system-detail_origin-&gt;* = me-&gt;ms_work_area_private-compare-system-origin-&gt;*.
+    IF &lt;lfs_t_display_origin&gt; IS ASSIGNED.
+      me-&gt;ms_work_area_private-compare-system-detail_origin-&gt;* =
+      |{ me-&gt;ms_work_area_private-compare-system-detail_origin-&gt;* }| &amp;&amp;
+      | \| { lines( &lt;lfs_t_display_origin&gt; ) } \\ { &lt;lfs_s_compare_result&gt;-lines_count_origin } { text-tnl }|.
+
+    ENDIF.
+
+    &quot; Cible - Détail
+    me-&gt;ms_work_area_private-compare-system-detail_target-&gt;* = me-&gt;ms_work_area_private-compare-system-target-&gt;*.
+    IF &lt;lfs_t_display_target&gt; IS ASSIGNED.
+      me-&gt;ms_work_area_private-compare-system-detail_target-&gt;* =
+        |{ me-&gt;ms_work_area_private-compare-system-detail_target-&gt;* }| &amp;&amp;
+        | \| { lines( &lt;lfs_t_display_target&gt; ) } \\ { &lt;lfs_s_compare_result&gt;-lines_count_target } { text-tnl }|.
 
     ENDIF.
 
@@ -2851,7 +3800,7 @@ CLASS lcl_main IMPLEMENTATION.
       &lt;lfs_s_compare_result&gt;-no_common_fields = abap_true.
 
       &quot;&quot;  --&gt; Arrêt du traitement
-      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error
+      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error &quot;#EC NOTEXT
           NUMBER 012      INTO &lt;lfs_s_compare_result&gt;-message.
       RETURN.
 
@@ -2940,7 +3889,7 @@ CLASS lcl_main IMPLEMENTATION.
       &quot; Erreur lors de la génération des tables de Custo
       &quot;&quot;  --&gt; Arrêt du traitement
       &lt;lfs_s_compare_result&gt;-compare_error = abap_true.
-      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error
+      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error &quot;#EC NOTEXT
           NUMBER 013      INTO &lt;lfs_s_compare_result&gt;-message.
       RETURN.
 
@@ -2961,7 +3910,7 @@ CLASS lcl_main IMPLEMENTATION.
       &quot; Erreur lors de l&apos;attribution du FS sur table de custo
       &quot;&quot;  --&gt; Arrêt du traitement
       &lt;lfs_s_compare_result&gt;-compare_error = abap_true.
-      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error
+      MESSAGE ID &apos;ZTOOLS&apos; TYPE if_msg_output=&gt;msgtype_error &quot;#EC NOTEXT
           NUMBER 013      INTO &lt;lfs_s_compare_result&gt;-message.
       RETURN.
 
@@ -3010,11 +3959,25 @@ CLASS lcl_main IMPLEMENTATION.
     SORT : &lt;lfs_t_table_target&gt;, &lt;lfs_t_table_origin&gt;.
 
     &quot; Données identiques ?
-    &lt;lfs_s_compare_result&gt;-no_content_difference = xsdbool(
-      &lt;lfs_t_table_origin&gt;[] EQ &lt;lfs_t_table_target&gt;[]
-      AND &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
-      AND &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true
-    ).
+    IF &lt;lfs_s_compare_result&gt;-lines_count_origin NE &lt;lfs_s_compare_result&gt;-lines_count_target.
+      &quot; Nombre de lignes différentes
+      &lt;lfs_s_compare_result&gt;-no_content_difference = abap_false.
+
+    ELSEIF lines( &lt;lfs_t_table_origin&gt; ) NE &lt;lfs_s_compare_result&gt;-lines_count_origin
+        OR lines( &lt;lfs_t_table_target&gt; ) NE &lt;lfs_s_compare_result&gt;-lines_count_target.
+      &quot; Toutes les lignes non pas été chargées
+      &quot;&quot;  --&gt; Différenciation impossible
+      &lt;lfs_s_compare_result&gt;-no_content_difference = abap_undefined.
+
+    ELSE.
+      &quot; Toutes les lignes chargées
+      &lt;lfs_s_compare_result&gt;-no_content_difference = xsdbool(
+        &lt;lfs_t_table_origin&gt;[] EQ &lt;lfs_t_table_target&gt;[]
+        AND &lt;lfs_s_compare_result&gt;-exist_in_origin EQ abap_true
+        AND &lt;lfs_s_compare_result&gt;-exist_in_target EQ abap_true
+      ).
+
+    ENDIF.
 
     &quot; -----------------------------------------------------------
     &quot; Traitement optionnel
@@ -3321,6 +4284,77 @@ CLASS lcl_main IMPLEMENTATION.
 
   ENDMETHOD.
 
+  METHOD _workbench_result_save.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+*    TRY.
+*        &quot; -----------------------------------------------------------
+*        &quot; Sauvegarde le résultat
+*        &quot; -----------------------------------------------------------
+*
+*        &quot; Sauvegarde les données de résultat
+*        zcl_archive=&gt;archive_add(
+*            ix_data                = REF #( me-&gt;ms_work_area_private-compare-workbench-display_element-t_display_data[] )
+*            iv_archive_type        = lcl_main=&gt;mc_archive_type
+*            iv_object_id_component = &apos;UNAME&apos;                &quot;#EC NOTEXT
+*            iv_compression         = abap_true
+*        ).
+*
+*      CATCH zcx_archive.
+*
+*    ENDTRY.
+
+  ENDMETHOD.
+
+  METHOD progress_display.
+
+***------------------------------------------------------------------***
+**                            VARIABLES                               **
+***------------------------------------------------------------------***
+    DATA :
+      lv_text TYPE string.
+
+***==================================================================***
+**                           TRAITEMENT                               **
+***==================================================================***
+
+    &quot; -----------------------------------------------------------
+    &quot; Initialisation texte
+    &quot; -----------------------------------------------------------
+
+    IF NOT iv_text IS INITIAL.
+      &quot; Texte transmis
+      &quot;&quot;  --&gt; Utilisation de ce texte
+      lv_text = iv_text.
+
+    ELSEIF NOT iv_msgid IS INITIAL
+       AND NOT iv_msgno IS INITIAL.
+      &quot; Classe de message transmise
+      &quot;&quot;  --&gt; Utilisation de ce message
+      MESSAGE ID iv_msgid TYPE if_msg_output=&gt;msgtype_success
+          NUMBER iv_msgno WITH iv_msgv1 iv_msgv2 iv_msgv3 iv_msgv3
+            INTO lv_text.
+
+    ELSE.
+      &quot; Pas suffisamment de paramètre
+      &quot;&quot;  --&gt; Utilisation texte par défaut
+      lv_text = text-p01.
+
+    ENDIF.
+
+    &quot; -----------------------------------------------------------
+    &quot; Affichage de la barre de progression
+    &quot; -----------------------------------------------------------
+
+    CALL FUNCTION &apos;SAPGUI_PROGRESS_INDICATOR&apos;
+      EXPORTING
+        text       = iv_text
+        percentage = iv_percentage.
+
+  ENDMETHOD.
 
   METHOD range_2_where.
 
@@ -3511,6 +4545,9 @@ CLASS lcl_customizing_handle_events IMPLEMENTATION.
         me-&gt;mo_main-&gt;customizing_on_change_line( iv_row = iv_row ).
 
       WHEN OTHERS.
+        &quot; Autre
+        &quot;&quot;  --&gt; Arrêt du traitement
+        RETURN.
 
     ENDCASE.
 
@@ -3534,6 +4571,8 @@ CLASS lcl_customizing_handle_events IMPLEMENTATION.
 
       WHEN &apos;TABNAME&apos;.                                       &quot;#EC NOTEXT
         &quot; Nom de la table
+        &quot;&quot;  --&gt; Ouvre la transaction SE11
+        me-&gt;mo_main-&gt;ddic_transaction_display_table( iv_row ).
 
       WHEN OTHERS.
 
@@ -3543,514 +4582,79 @@ CLASS lcl_customizing_handle_events IMPLEMENTATION.
 
 ENDCLASS.                    &quot;lcl_customizing_handle_events IMPLEMENTATION</source>
  </PROG>
- <PROG NAME="Z_A_BC_COMPARE_OBJECT_C01" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
+ <PROG NAME="Z_A_BC_COMPARE_OBJECT_TOP" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
   <textPool>
    <language SPRAS="F">
-    <textElement ID="R" ENTRY="Include Z_A_BC_POST_REFRESH_CHECK_C01" LENGTH="37 "/>
+    <textElement ID="R" ENTRY="Include Z_A_BC_POST_REFRESH_CHECK_TOP" LENGTH="37 "/>
    </language>
   </textPool>
   <source>*&amp;---------------------------------------------------------------------*
-*&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_C01
+*&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_TOP
 *&amp;---------------------------------------------------------------------*
 
 
-*----------------------------------------------------------------------*
-*       CLASS LCL_main DEFINIION
-*----------------------------------------------------------------------*
-*
-*----------------------------------------------------------------------*
-CLASS lcl_main DEFINITION FINAL CREATE PRIVATE.
+***------------------------------------------------------------------***
+**                             INCLUDE                                **
+***------------------------------------------------------------------***
 
-*-- Publique
-  PUBLIC SECTION.
+
+***------------------------------------------------------------------***
+**                               MACRO                                **
+***------------------------------------------------------------------***
+
+***------------------------------------------------------------------***
+**                             CLASSES                                **
+***------------------------------------------------------------------***
+
+CLASS lcl_main DEFINITION DEFERRED.
+CLASS lcl_customizing_handle_events DEFINITION DEFERRED.
 
 ***------------------------------------------------------------------***
 **                              TYPES                                 **
 ***------------------------------------------------------------------***
 
-*   Déclaration de type
 
 ***------------------------------------------------------------------***
-**                           MÉTHODES                                 **
+**                           CONSTANTES                               **
 ***------------------------------------------------------------------***
+  DATA :
+        gc_rowcount TYPE sy-tabix VALUE 200.
 
-*	Déclaration de méthodes
-
-    &quot; Constructeur statique
-    CLASS-METHODS class_constructor.
-
-    &quot; Initialisation
-    CLASS-METHODS initialization
-      RETURNING VALUE(ro_main) TYPE REF TO lcl_main.
-
-    &quot; Modification Ecran de sélection
-    METHODS selection_screen_ouput.
-
-    &quot; Traitement
-    METHODS start_of_selection
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Workbench - PBO
-    METHODS status_2000.
-
-    &quot; Workbench - User Command
-    METHODS user_command_2000.
-
-    &quot; Workbench - PBO
-    METHODS status_3000.
-
-    &quot; Customizing - User Command
-    METHODS user_command_3000.
-
-    &quot; Customizing - Lors du changement de ligne
-    METHODS customizing_on_change_line
-      IMPORTING
-        !iv_row     TYPE int4 OPTIONAL
-        !iv_tabname TYPE clike OPTIONAL
-          PREFERRED PARAMETER !iv_tabname.
+***------------------------------------------------------------------***
+**                             RANGES                                 **
+***------------------------------------------------------------------***
 
 
 ***------------------------------------------------------------------***
-**                            ATTRIBUTS                               **
+**                             TABLES                                 **
 ***------------------------------------------------------------------***
 
-*	Déclaration d&apos;attributs
-
-    &quot; Constantes ID ALV
-    CONSTANTS :
-      BEGIN OF mc_salv_id,
-        BEGIN OF customizing,
-          table_list TYPE string VALUE &apos;CUSTO_TL&apos;,          &quot;#EC NOTEXT
-          origin     TYPE string VALUE &apos;CUSTO_OR&apos;,          &quot;#EC NOTEXT
-          target     TYPE string VALUE &apos;CUSTO_TA&apos;,          &quot;#EC NOTEXT
-        END OF  customizing,
-        BEGIN OF workbench,
-          result TYPE string VALUE &apos;WKB_RE&apos;,                &quot;#EC NOTEXT
-        END OF   workbench,
-      END OF mc_salv_id.
-
-    &quot; Constantes Action Utilisateur
-    CONSTANTS :
-      BEGIN OF mc_ucomm,
-        BEGIN OF common,
-          exit  TYPE sy-ucomm VALUE &apos;EXIT&apos;,                 &quot;#EC NOTEXT
-          leave TYPE sy-ucomm VALUE &apos;LEAVE&apos;,                &quot;#EC NOTEXT
-          dummy TYPE sy-ucomm VALUE &apos;DUMMY&apos;,                &quot;#EC NOTEXT
-        END OF common,
-        BEGIN OF customizing,
-          next     TYPE sy-ucomm VALUE &apos;NEXT&apos;,              &quot;#EC NOTEXT
-          previous TYPE sy-ucomm VALUE &apos;PREVIOUS&apos;,          &quot;#EC NOTEXT
-        END OF customizing,
-      END OF mc_ucomm.
-
-*-- Privée
-  PRIVATE SECTION.
 
 ***------------------------------------------------------------------***
-**                              TYPES                                 **
+**                            STRUCTURE                               **
 ***------------------------------------------------------------------***
 
-*   Déclaration de type
-    TYPES :
-      BEGIN OF ts_compare_title_box,
-        origin TYPE REF TO string,
-        target TYPE REF TO string,
-      END OF   ts_compare_title_box.
-
-    TYPES :
-      BEGIN OF ts_selection_criteria_workb,
-        ov_activ    TYPE REF TO xsdboolean,
-        or_devclass LIKE REF TO s_pack[],
-        or_obj_name LIKE REF TO s_progn[],
-        or_funcname LIKE REF TO s_funcn[],
-      END OF   ts_selection_criteria_workb.
-
-    TYPES :
-      BEGIN OF ts_selection_criteria_custo,
-        ov_activ   TYPE REF TO xsdboolean,
-        or_tabname LIKE REF TO s_tabn[],
-      END OF   ts_selection_criteria_custo.
-
-    TYPES :
-      BEGIN OF ts_selection_criteria_system,
-        ov_origin TYPE REF TO vers_dest-rfcdest,
-        ov_target TYPE REF TO vers_dest-rfcdest,
-      END OF   ts_selection_criteria_system.
-
-    TYPES :
-      BEGIN OF ts_selection_criteria_opt_comp,
-        ov_all_type                 TYPE REF TO xsdboolean,
-        ov_only_difference          TYPE REF TO xsdboolean,
-        ov_only_object_commun       TYPE REF TO xsdboolean,
-        ov_compare_identical_struct TYPE REF TO xsdboolean,
-      END OF   ts_selection_criteria_opt_comp.
-
-    TYPES :
-      BEGIN OF ts_selection_criteria,
-        system         TYPE lcl_main=&gt;ts_selection_criteria_system,
-        workbench      TYPE lcl_main=&gt;ts_selection_criteria_workb,
-        customizing    TYPE lcl_main=&gt;ts_selection_criteria_custo,
-        compare_option TYPE lcl_main=&gt;ts_selection_criteria_opt_comp,
-      END OF   ts_selection_criteria.
-
-    TYPES :
-      BEGIN OF ts_wa_object_workbench,
-        t_devclass          TYPE btfr_package_tt,
-        t_imp_e071          TYPE scwb_t_e071,
-        t_object_to_compare TYPE scwb_t_e071,
-        t_only_origin       TYPE scwb_t_e071,
-        t_only_target       TYPE scwb_t_e071,
-      END OF   ts_wa_object_workbench.
-
-    TYPES :
-      BEGIN OF ts_wa_object_customizing,
-        t_tabname_to_compare TYPE esh_t_om_tabname,
-        t_tabname_origin     TYPE esh_t_om_tabname,
-        t_tabname_target     TYPE esh_t_om_tabname,
-      END OF   ts_wa_object_customizing.
-
-    TYPES :
-      BEGIN OF ts_work_area_object,
-        workbench   TYPE lcl_main=&gt;ts_wa_object_workbench,
-        customizing TYPE lcl_main=&gt;ts_wa_object_customizing,
-      END OF   ts_work_area_object.
-
-    TYPES :
-      BEGIN OF ts_compare_customizing_com,
-        display_icon               TYPE icon_d,
-        tabname                    TYPE dd02l-tabname,
-        no_content_difference      TYPE xsdboolean,
-        no_content_difference_icon TYPE icon_d,
-        exist_in_origin            TYPE xsdboolean,
-        exist_in_origin_icon       TYPE icon_d,
-        exist_in_target            TYPE xsdboolean,
-        exist_in_target_icon       TYPE icon_d,
-        identical_structure        TYPE xsdboolean,
-        identical_structure_icon   TYPE icon_d,
-        no_common_fields           TYPE xsdboolean,
-        no_common_fields_icon      TYPE icon_d,
-        compare_error              TYPE xsdboolean,
-        compare_error_icon         TYPE icon_d,
-        message                    TYPE bapiret2-message,
-      END OF   ts_compare_customizing_com.
-
-    TYPES : tt_compare_customizing_com TYPE STANDARD TABLE OF ts_compare_customizing_com
-                    WITH NON-UNIQUE KEY primary_key COMPONENTS tabname.
-
-    TYPES :
-      BEGIN OF ts_compare_workbench_result,
-        icon                 TYPE icon_d,
-        object               TYPE tadir-object,
-        obj_name             TYPE tadir-obj_name,
-        exist_in_origin      TYPE xsdboolean,
-        exist_in_origin_icon TYPE icon_d,
-        exist_in_target      TYPE xsdboolean,
-        exist_in_target_icon TYPE icon_d,
-        fragment             TYPE vrs_compare_item-fragment,
-        fragname             TYPE vrs_compare_item-fragname,
-        package_origin       TYPE vrs_compare_item-devclass_a,
-        package_target       TYPE vrs_compare_item-devclass_b,
-        equal                TYPE vrs_compare_item-equal,
-        equal_icon           TYPE icon_d,
-        nonversionable       TYPE vrs_compare_item-nonversionable,
-        nonversionable_icon  TYPE icon_d,
-        not_readable         TYPE vrs_compare_item-not_readable,
-        not_readable_icon    TYPE icon_d,
-        not_comparable       TYPE vrs_compare_item-not_comparable,
-        not_comparable_icon  TYPE icon_d,
-      END OF   ts_compare_workbench_result.
-
-    TYPES : tt_compare_workbench_result TYPE STANDARD TABLE OF ts_compare_workbench_result
-                    WITH NON-UNIQUE KEY primary_key COMPONENTS object obj_name fragment fragname.
-
-    TYPES :
-      BEGIN OF ts_component_descr,
-        fieldname TYPE dd03vt-fieldname,
-        scrtext_s TYPE dd03vt-scrtext_s,
-        scrtext_m TYPE dd03vt-scrtext_m,
-        scrtext_l TYPE dd03vt-scrtext_l,
-      END OF   ts_component_descr.
-
-    TYPES : tt_component_descr TYPE SORTED TABLE OF ts_component_descr
-                    WITH NON-UNIQUE KEY primary_key COMPONENTS fieldname.
-    TYPES :
-      BEGIN OF ts_compare_customizing_result.
-            INCLUDE TYPE : lcl_main=&gt;ts_compare_customizing_com.
-    TYPES :
-      ot_content_origin  TYPE REF TO data,
-      ot_content_target  TYPE REF TO data,
-      t_component_origin TYPE cl_abap_structdescr=&gt;component_table,
-      t_component_target TYPE cl_abap_structdescr=&gt;component_table,
-      t_component_descr  TYPE lcl_main=&gt;tt_component_descr,
-      END OF   ts_compare_customizing_result.
-
-    TYPES : tt_compare_customizing_result TYPE SORTED TABLE OF ts_compare_customizing_result
-                    WITH NON-UNIQUE KEY primary_key COMPONENTS tabname.
-
-    TYPES :
-      BEGIN OF ts_compare_customizing_de_tab,
-        o_salv          TYPE REF TO cl_salv_table,
-        o_container     TYPE REF TO cl_gui_container,
-        o_event_handler TYPE REF TO lcl_customizing_handle_events,
-        current_tabname TYPE string,
-        ot_display_data TYPE REF TO data,
-      END OF   ts_compare_customizing_de_tab.
-
-    TYPES :
-      BEGIN OF ts_wa_compare_customizing,
-        t_compare_result               TYPE lcl_main=&gt;tt_compare_customizing_result,
-        display_element_table_list     TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
-        display_element_content_origin TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
-        display_element_content_target TYPE lcl_main=&gt;ts_compare_customizing_de_tab BOXED,
-      END OF   ts_wa_compare_customizing.
-
-    TYPES :
-      BEGIN OF ts_compare_wokbench_de_tab,
-        o_salv          TYPE REF TO cl_salv_table,
-        o_container     TYPE REF TO cl_gui_container,
-        o_event_handler TYPE REF TO lcl_customizing_handle_events,
-        t_display_data  TYPE lcl_main=&gt;tt_compare_workbench_result,
-      END OF   ts_compare_wokbench_de_tab.
-
-    TYPES :
-      BEGIN OF ts_wa_compare_workbench,
-        t_compare_items TYPE vrs_compare_item_tab,
-        s_rfcsi_origin  TYPE rfcsi,
-        s_rfcsi_target  TYPE rfcsi,
-        t_nonvers       TYPE scwb_t_e071,
-        display_element TYPE lcl_main=&gt;ts_compare_wokbench_de_tab,
-      END OF   ts_wa_compare_workbench.
-
-    TYPES :
-      BEGIN OF ts_work_area_compare,
-        system      TYPE lcl_main=&gt;ts_compare_title_box BOXED,
-        workbench   TYPE lcl_main=&gt;ts_wa_compare_workbench BOXED,
-        customizing TYPE lcl_main=&gt;ts_wa_compare_customizing BOXED,
-      END OF   ts_work_area_compare.
-
-    TYPES :
-      BEGIN OF ts_work_area_private,
-        object  TYPE lcl_main=&gt;ts_work_area_object,
-        compare TYPE lcl_main=&gt;ts_work_area_compare,
-      END OF   ts_work_area_private.
 
 ***------------------------------------------------------------------***
-**                           MÉTHODES                                 **
+**                            INSTANCES                               **
 ***------------------------------------------------------------------***
-
-*	Déclaration de méthodes
-
-    &quot; Range To Where
-    CLASS-METHODS range_2_where
-      IMPORTING
-        !ir_selopt_t        TYPE ANY TABLE
-        !iv_tablename       TYPE clike OPTIONAL
-        !iv_fieldname       TYPE clike
-      RETURNING
-        VALUE(rv_sql_where) TYPE string.
-
-    &quot; Constructeur
-    METHODS constructor.
-
-    &quot; Contrôle saisi
-    METHODS _check_input
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Contrôle système
-    METHODS _check_system
-      IMPORTING
-                !iv_rfcdest     TYPE rfcdest
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Récupération des données
-    METHODS _object_get
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Récupération Objet Workbench
-    METHODS _object_workbench_get
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Récupération Objet - Custo
-    METHODS _object_customizing_get
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Récupération des objets des Packages
-    METHODS _object_package_get
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison des objets
-    METHODS _compare_object
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison des Ojets - Workbench
-    METHODS _compare_object_workbench
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison des Ojets - Customizing
-    METHODS _compare_object_customizing
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison - Affichage
-    METHODS _compare_display
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison - Workbench - Affichage
-    METHODS _compare_display_workbench
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Comparaison - Customizing - Affichage
-    METHODS _compare_display_customizing
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Initilisation Contenu Table - Customizing
-    METHODS _custo_compare_content_table
-      IMPORTING
-        !iv_tablename     TYPE clike
-        !it_data_origin   TYPE esh_t_co_rfcrt_data
-        !it_data_target   TYPE esh_t_co_rfcrt_data
-        !it_fields_origin TYPE esh_t_co_rfcrt_fields
-        !it_fields_target TYPE esh_t_co_rfcrt_fields.
-
-    &quot; Constitution structure des tables - Comparaison
-    METHODS _custo_compare_prepare_struct
-      IMPORTING
-        !it_fields_to_use       TYPE esh_t_co_rfcrt_fields
-        !it_fields_to_compare   TYPE esh_t_co_rfcrt_fields OPTIONAL
-        !iv_identical_structure TYPE xsdboolean OPTIONAL
-      EXPORTING
-        !et_component           TYPE cl_abap_structdescr=&gt;component_table
-      CHANGING
-        !ct_component_descr     TYPE lcl_main=&gt;tt_component_descr.
-
-    &quot; Création table dynamic
-    METHODS _custo_compare_generate_table
-      IMPORTING
-                !it_component                 TYPE cl_abap_structdescr=&gt;component_table
-      EXPORTING
-                !eot_table                    TYPE REF TO data
-      RETURNING VALUE(rv_data_creation_error) TYPE xsdboolean.
-
-    &quot; Move-corresponding Table
-    METHODS _custo_comp_content_table_set
-      IMPORTING
-        !it_fields        TYPE esh_t_co_rfcrt_fields
-        !it_component     TYPE cl_abap_structdescr=&gt;component_table
-        !it_table_content TYPE STANDARD TABLE
-      EXPORTING
-        !et_data_export   TYPE STANDARD TABLE.
-
-    &quot; Customizing - Initialisation affichage résultat comparaison
-    METHODS _compare_display_feed_compare
-      IMPORTING
-                !iv_tabname     TYPE clike
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
-
-    &quot; Customizing -
-    METHODS _custo_display_fill_content
-      IMPORTING
-        !it_content_to_use     TYPE STANDARD TABLE
-        !it_content_to_compare TYPE STANDARD TABLE OPTIONAL
-      EXPORTING
-        !et_display_data       TYPE STANDARD TABLE.
-
-    &quot; Customizing - Initialisation ALV
-    METHODS _custo_display_comp_alv_set
-      IMPORTING
-                !iv_origin          TYPE xsdboolean
-                !it_component       TYPE cl_abap_structdescr=&gt;component_table
-                !it_component_descr TYPE lcl_main=&gt;tt_component_descr
-      RETURNING VALUE(rv_subrc)     TYPE sy-subrc.
-
-    &quot; Sélection à distance
-    METHODS _rfc_read_table
-      IMPORTING
-                !iv_destination TYPE rfcdest
-                !iv_query_table TYPE dd02l-tabname
-                !it_fields      TYPE esh_t_co_rfcrt_fields OPTIONAL
-                !it_options     TYPE esh_t_co_rfcrt_options OPTIONAL
-      EXPORTING
-                !et_data        TYPE STANDARD TABLE
-                !et_fields      TYPE esh_t_co_rfcrt_fields
-      RETURNING VALUE(rv_subrc) TYPE sy-subrc.
+DATA :
+      go_main TYPE REF TO lcl_main.
 
 ***------------------------------------------------------------------***
-**                            ATTRIBUTS                               **
+**                            VARIABLES                               **
 ***------------------------------------------------------------------***
 
-*	Déclaration d&apos;attributs
-
-    DATA : ms_work_area_private TYPE lcl_main=&gt;ts_work_area_private.
-    DATA : ms_selection_criteria TYPE lcl_main=&gt;ts_selection_criteria.
-
-ENDCLASS.             &quot;lcl_main DEFINITION
-
-*---------------------------------------------------------------------*
-*       CLASS lcl_customizing_handle_events DEFINITION
-*---------------------------------------------------------------------*
-*
-*---------------------------------------------------------------------*
-CLASS lcl_customizing_handle_events DEFINITION.
-
-*-- Publique
-  PUBLIC SECTION.
+DATA : gv_sytem_target TYPE string.
+DATA : gv_sytem_origin TYPE string.
+DATA : gv_custo_tabname TYPE string.
+DATA : gv_custo_det_origin TYPE string.
+DATA : gv_custo_det_target TYPE string.
+DATA : gv_lines_to_read_input TYPE sy-tabix.
 
 ***------------------------------------------------------------------***
-**                              TYPES                                 **
-***------------------------------------------------------------------***
-
-*   Déclaration de type
-
-***------------------------------------------------------------------***
-**                           MÉTHODES                                 **
-***------------------------------------------------------------------***
-
-*	Déclaration de méthodes
-
-    &quot; Constructeur
-    METHODS constructor
-      IMPORTING
-        !io_main       TYPE REF TO lcl_main
-        !iv_salv_id    TYPE clike
-        !io_salv_table TYPE REF TO cl_salv_table.
-
-    &quot; Handler - Lien
-    METHODS on_link_click FOR EVENT link_click OF cl_salv_events_table
-      IMPORTING !row !column.
-
-    &quot; Handler - Double clique
-    METHODS on_double_click FOR EVENT double_click OF cl_salv_events_table
-      IMPORTING !row !column.
-
-***------------------------------------------------------------------***
-**                            ATTRIBUTS                               **
-***------------------------------------------------------------------***
-
-*	Déclaration d&apos;attributs
-
-*-- Privée
-  PRIVATE SECTION.
-
-    &quot; Handler - Lien - Custo Liste de table
-    METHODS _on_link_click_custo_tl
-      IMPORTING !iv_row    TYPE salv_de_row
-                !iv_column TYPE salv_de_column.
-
-    &quot; Handler - Double-Clique - Custo Liste de table
-    METHODS _on_double_click_custo_tl
-      IMPORTING !iv_row    TYPE salv_de_row
-                !iv_column TYPE salv_de_column.
-
-***------------------------------------------------------------------***
-**                              TYPES                                 **
-***------------------------------------------------------------------***
-
-*   Déclaration de type
-
-    DATA : mv_salv_id TYPE string.
-    DATA : mo_main TYPE REF TO lcl_main.
-    DATA : mo_salv_table TYPE REF TO cl_salv_table.
-
-ENDCLASS.                    &quot;lcl_customizing_handle_events DEFINITION</source>
+**                          FIELD-SYMBOLS                             **
+***------------------------------------------------------------------***</source>
  </PROG>
  <PROG NAME="Z_A_BC_COMPARE_OBJECT_F01" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
   <textPool>
@@ -4079,7 +4683,6 @@ MODULE status_2000 OUTPUT.
   &quot; -----------------------------------------------------------
 
   go_main-&gt;status_2000( ).
-
 
 ENDMODULE.
 
@@ -4235,79 +4838,289 @@ PARAMETERS : p_siden AS CHECKBOX MODIF ID cus.
 &quot; Tout type de table
 PARAMETERS : p_t_all AS CHECKBOX MODIF ID cus.
 
+&quot; Partionne la lecture
+PARAMETERS : p_rpart AS CHECKBOX USER-COMMAND urp MODIF ID cus DEFAULT &apos;X&apos;. &quot;#EC NOTEXT
+
+&quot; Nombre de lignes
+PARAMETERS : p_crowc TYPE soid-accnt DEFAULT gc_rowcount MODIF ID cus. &quot;#EC NOTEXT
+
 SELECTION-SCREEN END OF BLOCK b6.
 
 SELECTION-SCREEN END OF BLOCK b5.</source>
  </PROG>
- <PROG NAME="Z_A_BC_COMPARE_OBJECT_TOP" VARCL="X" SUBC="I" APPL="*" LEVL="740" RSTAT="K" RMAND="200" RLOAD="F" UCCHECK="X">
+ <PROG NAME="Z_A_BC_COMPARE_OBJECT" VARCL="X" SUBC="1" APPL="*" RSTAT="K" RMAND="200" RLOAD="F" FIXPT="X" UCCHECK="X">
   <textPool>
    <language SPRAS="F">
-    <textElement ID="R" ENTRY="Include Z_A_BC_POST_REFRESH_CHECK_TOP" LENGTH="37 "/>
+    <textElement ID="I" KEY="E00" ENTRY="@0A@" LENGTH="14 "/>
+    <textElement ID="I" KEY="I00" ENTRY="@09@" LENGTH="14 "/>
+    <textElement ID="I" KEY="ICD" ENTRY="@10@" LENGTH="14 "/>
+    <textElement ID="I" KEY="NOC" ENTRY="Table inexistante" LENGTH="68 "/>
+    <textElement ID="I" KEY="P01" ENTRY="Progression" LENGTH="21 "/>
+    <textElement ID="I" KEY="PCT" ENTRY="Comparaison table ( &amp;1/ &amp;2) : &amp;3" LENGTH="60 "/>
+    <textElement ID="I" KEY="RSO" ENTRY="Recherche table système origine" LENGTH="62 "/>
+    <textElement ID="I" KEY="RST" ENTRY="Recherche table système cible" LENGTH="58 "/>
+    <textElement ID="I" KEY="S00" ENTRY="@08@" LENGTH="14 "/>
+    <textElement ID="I" KEY="TA1" ENTRY="Parallélisation" LENGTH="24 "/>
+    <textElement ID="I" KEY="TB1" ENTRY="Système à comparer" LENGTH="28 "/>
+    <textElement ID="I" KEY="TB2" ENTRY="Objets à comparer" LENGTH="42 "/>
+    <textElement ID="I" KEY="TB3" ENTRY="Workbench - Critère de sélection" LENGTH="64 "/>
+    <textElement ID="I" KEY="TB4" ENTRY="Customizing - Critère de sélection" LENGTH="68 "/>
+    <textElement ID="I" KEY="TB5" ENTRY="Options de comparaison" LENGTH="44 "/>
+    <textElement ID="I" KEY="TB6" ENTRY="Options pour Customizing" LENGTH="46 "/>
+    <textElement ID="I" KEY="TC1" ENTRY="Congifuration Parallélisation" LENGTH="58 "/>
+    <textElement ID="I" KEY="TC2" ENTRY="Options supplémentaires" LENGTH="46 "/>
+    <textElement ID="I" KEY="TCD" ENTRY="Similarité de contenu" LENGTH="56 "/>
+    <textElement ID="I" KEY="TCE" ENTRY="Statut comparaison" LENGTH="28 "/>
+    <textElement ID="I" KEY="TEO" ENTRY="Existe dans système origine" LENGTH="50 "/>
+    <textElement ID="I" KEY="TEQ" ENTRY="Equivalent" LENGTH="20 "/>
+    <textElement ID="I" KEY="TET" ENTRY="Existe dans système cible" LENGTH="50 "/>
+    <textElement ID="I" KEY="TIC" ENTRY="Statut" LENGTH="16 "/>
+    <textElement ID="I" KEY="TIS" ENTRY="Structure identique" LENGTH="29 "/>
+    <textElement ID="I" KEY="TLO" ENTRY="Origine - Nb lignes" LENGTH="46 "/>
+    <textElement ID="I" KEY="TLT" ENTRY="Cible - Nb lignes" LENGTH="42 "/>
+    <textElement ID="I" KEY="TNC" ENTRY="Non comparable" LENGTH="24 "/>
+    <textElement ID="I" KEY="TNF" ENTRY="Pas de champs en commun" LENGTH="46 "/>
+    <textElement ID="I" KEY="TNL" ENTRY="lignes" LENGTH="16 "/>
+    <textElement ID="I" KEY="TNR" ENTRY="Non lisible" LENGTH="21 "/>
+    <textElement ID="I" KEY="TNV" ENTRY="Non versionnable" LENGTH="26 "/>
+    <textElement ID="I" KEY="TSO" ENTRY="Système Origine" LENGTH="25 "/>
+    <textElement ID="I" KEY="TST" ENTRY="Système Cible" LENGTH="23 "/>
+    <textElement ID="R" ENTRY="Utilitaire : Comparaison version objets" LENGTH="39 "/>
+    <textElement ID="S" KEY="P_CROWC" ENTRY="        Nombre de lignes max." LENGTH="29 "/>
+    <textElement ID="S" KEY="P_CUSTO" ENTRY="        Customizing" LENGTH="19 "/>
+    <textElement ID="S" KEY="P_DGRFC" ENTRY="        Groupe par défaut" LENGTH="25 "/>
+    <textElement ID="S" KEY="P_GRFC" ENTRY="D       ." LENGTH="26 "/>
+    <textElement ID="S" KEY="P_GRFC_R" ENTRY="        Groupe spécifique" LENGTH="25 "/>
+    <textElement ID="S" KEY="P_NTASK" ENTRY="        Nombre de tâche" LENGTH="23 "/>
+    <textElement ID="S" KEY="P_ONLY_C" ENTRY="        Uniquement objet commun" LENGTH="31 "/>
+    <textElement ID="S" KEY="P_ONLY_D" ENTRY="        Afficher uniq. différence" LENGTH="33 "/>
+    <textElement ID="S" KEY="P_RFC_O" ENTRY="        Système origine" LENGTH="23 "/>
+    <textElement ID="S" KEY="P_RFC_T" ENTRY="        Système cible" LENGTH="21 "/>
+    <textElement ID="S" KEY="P_RPART" ENTRY="        Partionner la lecture" LENGTH="29 "/>
+    <textElement ID="S" KEY="P_SIDEN" ENTRY="        Comparaison à str. identique" LENGTH="36 "/>
+    <textElement ID="S" KEY="P_TACT" ENTRY="        Activer parallélisation" LENGTH="31 "/>
+    <textElement ID="S" KEY="P_TCOMP" ENTRY="        Activer Compression" LENGTH="27 "/>
+    <textElement ID="S" KEY="P_TCOMPG" ENTRY="        Globale" LENGTH="15 "/>
+    <textElement ID="S" KEY="P_TCOMPL" ENTRY="        Ligne-à-ligne" LENGTH="21 "/>
+    <textElement ID="S" KEY="P_TSHM" ENTRY="        Gestion auto. SHM" LENGTH="25 "/>
+    <textElement ID="S" KEY="P_TTRACE" ENTRY="        Activer trace" LENGTH="21 "/>
+    <textElement ID="S" KEY="P_T_ALL" ENTRY="        Tous type de table" LENGTH="26 "/>
+    <textElement ID="S" KEY="P_WORKB" ENTRY="        Workbench" LENGTH="17 "/>
+    <textElement ID="S" KEY="S_FUNCN" ENTRY="D       ." LENGTH="23 "/>
+    <textElement ID="S" KEY="S_PACK" ENTRY="D       ." LENGTH="15 "/>
+    <textElement ID="S" KEY="S_PROGN" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_TABN" ENTRY="D       ." LENGTH="20 "/>
    </language>
   </textPool>
+  <dynpros>
+   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="2000" FNUM="2000" BZMX="0 " BZBR="0 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="175 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
+    <dynprofield FNAM="CC_WORKBENCH_COMPARE_RESULT" DIDX="001B" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="AF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_2000.
+
+PROCESS AFTER INPUT.
+  MODULE user_command_2000.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="Z_A_BC_COMPARE_OBJECT" DNUM="3000" FNUM="3000" BZMX="26 " BZBR="185 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="27 " NOCO="189 " VALP="0 " CUAN="G" SPRA="F" DTEXT="Affichage résultat comparaison">
+    <dynprofield FNAM="CC_TABLE_LIST" DIDX="0006" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="B8" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield FNAM="GV_CUSTO_TABNAME" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="39" FMB2="00" LENG="1E" LINE="07" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="______________________________"/>
+    <dynprofield FNAM="LINES_TO_READ_TEXT" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="16" LINE="07" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" GRP1="REM" ITYP="0" AGLT="00" ADEZ="00" STXT="Nombre lignes à lire :" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="GV_LINES_TO_READ_INPUT" DIDX="0000" FLG1="80" FLG2="80" FLG3="80" FMB1="00" FMB2="00" LENG="0A" LINE="07" COLN="48" LANF="00" LBLK="00" LREP="00" TYPE="INT4" GRP1="REM" ITYP="X" AGLT="00" ADEZ="00" STXT="__________"/>
+    <dynprofield FNAM="BTN_READ_MORE" DIDX="0016" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="18" LINE="07" COLN="54" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="102" GRP1="REM" AGLT="00" ADEZ="00" STXT="@13@ Charger les données" RES1="                                                                                                                                                                        READ_MORE"/>
+    <dynprofield FNAM="GV_CUSTO_DET_ORIGIN" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="07" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="103" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
+    <dynprofield FNAM="GV_CUSTO_DET_TARGET" DIDX="0013" FLG1="80" FLG2="00" FLG3="80" FILL="R" FMB1="30" FMB2="00" LENG="58" LINE="08" COLN="5F" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="104" ITYP="C" AGLT="00" ADEZ="00" STXT="_______________________________________________________________________________________"/>
+    <dynprofield FNAM="CC_COMPARE_RESULT_ORIGIN" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="55" LINE="09" COLN="08" LANF="00" LBLK="00" LREP="00" AUTH="105" AGLT="01" ADEZ="01"/>
+    <dynprofield FNAM="CC_COMPARE_RESULT_TARGET" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="55" LINE="09" COLN="60" LANF="00" LBLK="00" LREP="00" AUTH="106" AGLT="01" ADEZ="01"/>
+    <dynprofield FNAM="BTN_PREVIOUS" DIDX="0003" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="04" LINE="11" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="107" GRP1="BPR" AGLT="00" ADEZ="00" STXT="@0D@" RES1="                                                                                                                                                                        PREVIOUS"/>
+    <dynprofield FNAM="BTN_NEXT" DIDX="0003" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="07" LINE="11" COLN="B8" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="108" GRP1="BNE" AGLT="00" ADEZ="00" STXT="@0E@" RES1="                                                                                                                                                                        NEXT"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_3000.
+
+PROCESS AFTER INPUT.
+  MODULE user_command_3000.</dynproflowsource>
+   </dynpro>
+  </dynpros>
+  <pfstatus>
+   <pfstatus_sta CODE="PF_STATUS_2000" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Workbench - Barre de Statut"/>
+   <pfstatus_sta CODE="PF_STATUS_3000" MODAL="D" ACTCODE="000002" PFKCODE="000002" BUTCODE="0001" INT_NOTE="Customizing - Barre de Statut"/>
+   <pfstatus_fun CODE="EXIT" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Retour"/>
+   <pfstatus_fun CODE="EXIT" TEXTNO="002" TEXT_TYPE="S" FUN_TEXT="Terminer"/>
+   <pfstatus_fun CODE="LEAVE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_CANCEL" ICON_ID="@0W@" FUN_TEXT="Interrompre"/>
+   <pfstatus_fun CODE="SAVE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_SYSTEM_SAVE" ICON_ID="@2L@" FUN_TEXT="Sauvegarder"/>
+   <pfstatus_men CODE="000001" NO="01" REF_TYPE="F" REF_CODE="&lt;01&gt;"/>
+   <pfstatus_men CODE="000001" NO="02" REF_TYPE="F" REF_CODE="&lt;02&gt;"/>
+   <pfstatus_men CODE="000001" NO="03" REF_TYPE="F" REF_CODE="&lt;03&gt;"/>
+   <pfstatus_men CODE="000001" NO="04" REF_TYPE="F" REF_CODE="&lt;04&gt;"/>
+   <pfstatus_men CODE="000001" NO="05" REF_TYPE="F" REF_CODE="&lt;05&gt;"/>
+   <pfstatus_men CODE="000001" NO="06" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000001" NO="07" REF_TYPE="F" REF_CODE="&lt;06&gt;"/>
+   <pfstatus_men CODE="000001" NO="08" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000001" NO="09" REF_TYPE="F" REF_CODE="&lt;09&gt;"/>
+   <pfstatus_men CODE="000001" NO="10" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000001" NO="11" REF_TYPE="F" REF_CODE="&lt;10&gt;"/>
+   <pfstatus_men CODE="000001" NO="12" REF_TYPE="F" REF_CODE="&lt;11&gt;"/>
+   <pfstatus_men CODE="000002" NO="01" REF_TYPE="F" REF_CODE="&lt;12&gt;"/>
+   <pfstatus_men CODE="000002" NO="02" REF_TYPE="F" REF_CODE="&lt;13&gt;"/>
+   <pfstatus_men CODE="000002" NO="03" REF_TYPE="F" REF_CODE="&lt;24&gt;"/>
+   <pfstatus_men CODE="000002" NO="04" REF_TYPE="F" REF_CODE="&lt;14&gt;"/>
+   <pfstatus_men CODE="000002" NO="05" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="06" REF_TYPE="F" REF_CODE="&lt;16&gt;"/>
+   <pfstatus_men CODE="000002" NO="07" REF_TYPE="F" REF_CODE="&lt;17&gt;"/>
+   <pfstatus_men CODE="000002" NO="08" REF_TYPE="F" REF_CODE="&lt;18&gt;"/>
+   <pfstatus_men CODE="000002" NO="09" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="10" REF_TYPE="F" REF_CODE="&lt;26&gt;"/>
+   <pfstatus_men CODE="000002" NO="11" REF_TYPE="F" REF_CODE="&lt;27&gt;"/>
+   <pfstatus_men CODE="000002" NO="12" REF_TYPE="F" REF_CODE="&lt;20&gt;"/>
+   <pfstatus_men CODE="000002" NO="13" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="14" REF_TYPE="F" REF_CODE="&lt;22&gt;"/>
+   <pfstatus_men CODE="000003" NO="01" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000003" NO="02" REF_TYPE="F" REF_CODE="&lt;23&gt;"/>
+   <pfstatus_men CODE="000006" NO="01" REF_TYPE="F" REF_CODE="&lt;01&gt;"/>
+   <pfstatus_men CODE="000006" NO="02" REF_TYPE="F" REF_CODE="&lt;02&gt;"/>
+   <pfstatus_men CODE="000006" NO="03" REF_TYPE="F" REF_CODE="&lt;03&gt;"/>
+   <pfstatus_men CODE="000006" NO="04" REF_TYPE="F" REF_CODE="&lt;04&gt;"/>
+   <pfstatus_men CODE="000006" NO="05" REF_TYPE="F" REF_CODE="&lt;05&gt;"/>
+   <pfstatus_men CODE="000006" NO="06" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000006" NO="07" REF_TYPE="F" REF_CODE="&lt;06&gt;"/>
+   <pfstatus_men CODE="000006" NO="08" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000006" NO="09" REF_TYPE="F" REF_CODE="&lt;09&gt;"/>
+   <pfstatus_men CODE="000006" NO="10" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000006" NO="11" REF_TYPE="F" REF_CODE="&lt;10&gt;"/>
+   <pfstatus_men CODE="000006" NO="12" REF_TYPE="F" REF_CODE="&lt;11&gt;"/>
+   <pfstatus_men CODE="000007" NO="01" REF_TYPE="F" REF_CODE="&lt;12&gt;"/>
+   <pfstatus_men CODE="000007" NO="02" REF_TYPE="F" REF_CODE="&lt;13&gt;"/>
+   <pfstatus_men CODE="000007" NO="03" REF_TYPE="F" REF_CODE="&lt;24&gt;"/>
+   <pfstatus_men CODE="000007" NO="04" REF_TYPE="F" REF_CODE="&lt;14&gt;"/>
+   <pfstatus_men CODE="000007" NO="05" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000007" NO="06" REF_TYPE="F" REF_CODE="&lt;16&gt;"/>
+   <pfstatus_men CODE="000007" NO="07" REF_TYPE="F" REF_CODE="&lt;17&gt;"/>
+   <pfstatus_men CODE="000007" NO="08" REF_TYPE="F" REF_CODE="&lt;18&gt;"/>
+   <pfstatus_men CODE="000007" NO="09" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000007" NO="10" REF_TYPE="F" REF_CODE="&lt;26&gt;"/>
+   <pfstatus_men CODE="000007" NO="11" REF_TYPE="F" REF_CODE="&lt;27&gt;"/>
+   <pfstatus_men CODE="000007" NO="12" REF_TYPE="F" REF_CODE="&lt;20&gt;"/>
+   <pfstatus_men CODE="000007" NO="13" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000007" NO="14" REF_TYPE="F" REF_CODE="&lt;22&gt;"/>
+   <pfstatus_men CODE="000008" NO="01" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000008" NO="02" REF_TYPE="F" REF_CODE="&lt;23&gt;"/>
+   <pfstatus_mtx CODE="000001" TEXT_TYPE="S" TEXT="&lt;Objet&gt;" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000002" TEXT_TYPE="S" TEXT="Traiter" PATH="T" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000003" TEXT_TYPE="S" TEXT="Saut" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000004" TEXT_TYPE="S" TEXT="Autres fonctions" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000005" TEXT_TYPE="S" TEXT="Environnement" PATH="E" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000006" TEXT_TYPE="S" TEXT="&lt;Objet&gt;" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000007" TEXT_TYPE="S" TEXT="Traiter" PATH="T" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000008" TEXT_TYPE="S" TEXT="Saut" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000009" TEXT_TYPE="S" TEXT="Autres fonctions" INT_NOTE="Complément de la norme"/>
+   <pfstatus_mtx CODE="000010" TEXT_TYPE="S" TEXT="Environnement" PATH="E" INT_NOTE="Complément de la norme"/>
+   <pfstatus_act CODE="000001" NO="01" MENUCODE="000001"/>
+   <pfstatus_act CODE="000001" NO="02" MENUCODE="000002"/>
+   <pfstatus_act CODE="000001" NO="03" MENUCODE="000003"/>
+   <pfstatus_act CODE="000001" NO="04" MENUCODE="000004"/>
+   <pfstatus_act CODE="000001" NO="05" MENUCODE="000005"/>
+   <pfstatus_act CODE="000002" NO="01" MENUCODE="000006"/>
+   <pfstatus_act CODE="000002" NO="02" MENUCODE="000007"/>
+   <pfstatus_act CODE="000002" NO="03" MENUCODE="000008"/>
+   <pfstatus_act CODE="000002" NO="04" MENUCODE="000009"/>
+   <pfstatus_act CODE="000002" NO="05" MENUCODE="000010"/>
+   <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="EXIT" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="11" FUNCODE="SAVE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="12" FUNCODE="LEAVE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="15" FUNCODE="EXIT" FUNNO="002"/>
+   <pfstatus_pfk CODE="000002" PFNO="03" FUNCODE="EXIT" FUNNO="001"/>
+   <pfstatus_pfk CODE="000002" PFNO="12" FUNCODE="LEAVE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000002" PFNO="15" FUNCODE="EXIT" FUNNO="002"/>
+   <pfstatus_set STATUS="PF_STATUS_2000" FUNCTION="EXIT"/>
+   <pfstatus_set STATUS="PF_STATUS_2000" FUNCTION="LEAVE"/>
+   <pfstatus_set STATUS="PF_STATUS_2000" FUNCTION="SAVE"/>
+   <pfstatus_set STATUS="PF_STATUS_3000" FUNCTION="EXIT"/>
+   <pfstatus_set STATUS="PF_STATUS_3000" FUNCTION="LEAVE"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" NORM="X" INT_NOTE="Workbench - Barre de Statut"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="Workbench - Barre de Statut"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="Workbench - Barre de Statut"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000002" MODAL="D" NORM="X" INT_NOTE="Customizing - Barre de Statut"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000002" MODAL="D" INT_NOTE="Customizing - Barre de Statut"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000002" SUB_CODE="0001" MODAL="D" INT_NOTE="Customizing - Barre de Statut"/>
+   <pfstatus_tit CODE="TITLEBAR_2000" TEXT="Workbench - Résultat comparaison"/>
+   <pfstatus_tit CODE="TITLEBAR_3000" TEXT="Customizing - Résultat comparaison"/>
+  </pfstatus>
   <source>*&amp;---------------------------------------------------------------------*
-*&amp;  Include           Z_A_BC_POST_REFRESH_CHECK_TOP
+*&amp; Programme       : Z_A_BC_POST_REFRESH_CHECK                         *
+*&amp; Description     : Comparaison d&apos;objets en masse                     *
+*                                                                      *
 *&amp;---------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp; Créé par     : Olivier Véhier                                       *
+*                                                                      *
+*&amp; Créé le      : 10/06/2021                                           *
+*                                                                      *
+*&amp;---------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp; Liste des modifications                                             *
+*&amp; Auteur      Date       Signature  Objet de la modification          *
+*&amp;---------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*                                                                      *
+
+REPORT z_a_bc_compare_object.
+
+&quot; Include - Définition Types / Globales
+INCLUDE z_a_bc_compare_object_top.
+
+&quot; Include - Ecran de sélection
+INCLUDE z_a_bc_compare_object_sel.
+
+&quot; Include - Classe - Définition
+INCLUDE z_a_bc_compare_object_c01.
+
+&quot; Include - Classe - Implémentation
+INCLUDE z_a_bc_compare_object_c02.
+
+&quot; Include - Classe - Parallélisation
+*INCLUDE z_a_bc_compare_object_cta.
+
+&quot; Include - Routine
+INCLUDE z_a_bc_compare_object_f01.
+
+***==================================================================***
+**                           INITIALIZATION                           **
+***==================================================================***
+INITIALIZATION.
+  &quot; Initialisation
+  go_main = lcl_main=&gt;initialization( ).
+
+***==================================================================***
+**                         AT SELECTION-SCREEN                        **
+***==================================================================***
+AT SELECTION-SCREEN.
 
 
-***------------------------------------------------------------------***
-**                             INCLUDE                                **
-***------------------------------------------------------------------***
+***==================================================================***
+**                     AT SELECTION-SCREEN OUTPUT                     **
+***==================================================================***
+AT SELECTION-SCREEN OUTPUT.
+  &quot; Modification écran
+  go_main-&gt;selection_screen_ouput( ).
 
+***==================================================================***
+**                         START-OF-SELECTION                         **
+***==================================================================***
+START-OF-SELECTION.
 
-***------------------------------------------------------------------***
-**                               MACRO                                **
-***------------------------------------------------------------------***
+***==================================================================***
+**                             TRAITEMENT                             **
+***==================================================================***
 
-***------------------------------------------------------------------***
-**                             CLASSES                                **
-***------------------------------------------------------------------***
+  &quot; -----------------------------------------------------------
+  &quot; Traitement
+  &quot; -----------------------------------------------------------
 
-CLASS lcl_main DEFINITION DEFERRED.
-CLASS lcl_customizing_handle_events DEFINITION DEFERRED.
+  &quot; Traitement principal
+  go_main-&gt;start_of_selection( ).
 
-***------------------------------------------------------------------***
-**                              TYPES                                 **
-***------------------------------------------------------------------***
-
-
-***------------------------------------------------------------------***
-**                           CONSTANTES                               **
-***------------------------------------------------------------------***
-
-
-***------------------------------------------------------------------***
-**                             RANGES                                 **
-***------------------------------------------------------------------***
-
-
-***------------------------------------------------------------------***
-**                             TABLES                                 **
-***------------------------------------------------------------------***
-
-
-***------------------------------------------------------------------***
-**                            STRUCTURE                               **
-***------------------------------------------------------------------***
-
-
-***------------------------------------------------------------------***
-**                            INSTANCES                               **
-***------------------------------------------------------------------***
-DATA :
-      go_main TYPE REF TO lcl_main.
-
-***------------------------------------------------------------------***
-**                            VARIABLES                               **
-***------------------------------------------------------------------***
-
-DATA : gv_sytem_target TYPE string.
-DATA : gv_sytem_origin TYPE string.
-DATA : gv_custo_tabname TYPE string.
-
-***------------------------------------------------------------------***
-**                          FIELD-SYMBOLS                             **
-***------------------------------------------------------------------***</source>
+END-OF-SELECTION.</source>
  </PROG>
  <TRAN TCODE="ZOBJECT_COMPARE" PGMNA="Z_A_BC_COMPARE_OBJECT" DYPNO="1000" CINFO="80">
   <tstct SPRSL="F" TCODE="ZOBJECT_COMPARE" TTEXT="Comparaison d&apos;objet"/>
